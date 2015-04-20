@@ -9,17 +9,18 @@ import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
-public class WearService extends WearableListenerService {
+public class WearService extends WearableListenerService implements WearProtocol {
 
     private final static String TAG = WearService.class.getCanonicalName();
 
-    protected DeLorean deLorean = new DeLorean();
+    private DeLorean deLorean = new DeLorean();
 
     @Override
     public void onCreate() {
         super.onCreate();
         deLorean.onCreate(this);
 
+        /*
         deLorean.registerReceiver(WearProtocol.class,new WearProtocol() {
             @Override
             public void sayHello() {
@@ -31,6 +32,19 @@ public class WearService extends WearableListenerService {
                 Log.d(TAG,"sayGoodbye "+delay+" "+text+" "+myObject.getName());
             }
         });
+        */
+
+        deLorean.registerReceiver(WearProtocol.class,this);
+    }
+
+    @Override
+    public void sayHello() {
+        Log.d(TAG,"sayHello");
+    }
+
+    @Override
+    public void sayGoodbye(int delay, String text, MyObject myObject) {
+        Log.d(TAG,"sayGoodbye "+delay+" "+text+" "+myObject.getName());
     }
 
     @Override
@@ -42,12 +56,16 @@ public class WearService extends WearableListenerService {
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         super.onMessageReceived(messageEvent);
+        //on WearableListenerService you have to dispatch onMessageReceived(x)
         deLorean.onMessageReceived(messageEvent);
     }
 
     @Override
     public void onDataChanged(DataEventBuffer dataEvents) {
         super.onDataChanged(dataEvents);
+        //on WearableListenerService you have to dispatch onDataChanged(x)
         deLorean.onDataChanged(dataEvents);
     }
+
+
 }
