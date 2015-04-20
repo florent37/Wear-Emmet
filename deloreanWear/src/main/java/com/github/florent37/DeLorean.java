@@ -66,12 +66,12 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
             mApiClient.disconnect();
     }
 
-    public <T> T create(Class<T> protocol) {
+    public <T> T registerSender(Class<T> protocol) {
         return (T) Proxy.newProxyInstance(protocol.getClassLoader(), new Class<?>[]{protocol},
                 new DeLoreanInvocationHandler());
     }
 
-    public <T> void implement(Class<T> protocolClass, T protocol) {
+    public <T> void registerReceiver(Class<T> protocolClass, T protocol) {
         if (protocol != null) {
             interfaces.add(protocol);
         }
@@ -105,46 +105,55 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
     private void callMethodOnObject(final Object object, final DataMap methodDataMap) {
 
         String methodName = methodDataMap.getString(METHOD_NAME);
+        ArrayList<DataMap> methodDataMapList = methodDataMap.getDataMapArrayList(METHOD_PARAMS);
 
-        try {
-            Method method = getMethodWithName(object, methodName);
-            if (method != null){
-                ArrayList<DataMap> methodDataMapList = methodDataMap.getDataMapArrayList(METHOD_PARAMS);
-                int nbArgs = methodDataMapList.size();
+        List<Method> methodsList = getMethodWithName(object, methodName, methodDataMapList.size());
+        for (Method method : methodsList) {
+            try {
+                if (method != null) {
+                    int nbArgs = methodDataMapList.size();
 
-                Object[] params = new Object[nbArgs];
+                    Object[] params = new Object[nbArgs];
 
-                for (int argumentPos = 0; argumentPos < nbArgs; ++argumentPos) {
-                    Class paramClass = method.getParameterTypes()[argumentPos];
+                    for (int argumentPos = 0; argumentPos < nbArgs; ++argumentPos) {
+                        Class paramClass = method.getParameterTypes()[argumentPos];
 
-                    DataMap map = methodDataMapList.get(argumentPos);
+                        DataMap map = methodDataMapList.get(argumentPos);
 
-                    String type = map.getString(PARAM_TYPE);
-                    switch (type) {
-                        case (TYPE_INT):
-                            params[argumentPos] = map.getInt(PARAM_VALUE);
-                            break;
-                        case (TYPE_FLOAT):
-                            params[argumentPos] = map.getFloat(PARAM_VALUE);
-                            break;
-                        case (TYPE_DOUBLE):
-                            params[argumentPos] = map.getDouble(PARAM_VALUE);
-                            break;
-                        case (TYPE_LONG):
-                            params[argumentPos] = map.getLong(PARAM_VALUE);
-                            break;
-                        case (TYPE_STRING):
-                            params[argumentPos] = map.getString(PARAM_VALUE);
-                            break;
-                        default: {
-                            Object deserialized = SerialisationUtils.deserialize(paramClass, map.getString(PARAM_VALUE));
-                            params[argumentPos] = deserialized;
+                        String type = map.getString(PARAM_TYPE);
+                        switch (type) {
+                            case (TYPE_INT):
+                                params[argumentPos] = map.getInt(PARAM_VALUE);
+                                break;
+                            case (TYPE_FLOAT):
+                                params[argumentPos] = map.getFloat(PARAM_VALUE);
+                                break;
+                            case (TYPE_DOUBLE):
+                                params[argumentPos] = map.getDouble(PARAM_VALUE);
+                                break;
+                            case (TYPE_LONG):
+                                params[argumentPos] = map.getLong(PARAM_VALUE);
+                                break;
+                            case (TYPE_STRING):
+                                params[argumentPos] = map.getString(PARAM_VALUE);
+                                break;
+                            default: {
+                                Object deserialized = SerialisationUtils.deserialize(paramClass, map.getString(PARAM_VALUE));
+                                params[argumentPos] = deserialized;
+                            }
                         }
                     }
+
+                    //found the method
+                    method.invoke(object, params);
+
+                    //if call success, return / don't call other methods
+                    return;
                 }
+
+            } catch (Exception e) {
+                Log.e(TAG, "callMethodOnObject error", e);
             }
-        } catch (Exception e) {
-            Log.e(TAG, "callMethodOnObject error", e);
         }
     }
 
@@ -157,58 +166,14 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
         return types;
     }
 
-    private Method getMethodWithName(final Object object, final String name) {
+    private List<Method> getMethodWithName(final Object object, final String name, int parametersCount) {
+        List<Method> methodsList = new ArrayList<>();
         for (Method method : object.getClass().getDeclaredMethods()) {
-            if (method.getName().equals(name))
-                return method;
+            if (method.getName().equals(name)
+                    && method.getParameterTypes().length == parametersCount)
+                methodsList.add(method);
         }
-        return null;
-    }
-
-    private MethodDecoded decodeMethodDataMap(DataMap methodDataMap) throws Throwable {
-        MethodDecoded methodDecoded = new MethodDecoded();
-        methodDecoded.name = methodDataMap.getString(METHOD_NAME);
-
-        ArrayList<DataMap> methodDataMapList = methodDataMap.getDataMapArrayList(METHOD_PARAMS);
-        int nbArgs = methodDataMapList.size();
-
-        methodDecoded.params = new Object[nbArgs];
-
-        for (int argumentPos = 0; argumentPos < nbArgs; ++argumentPos) {
-            DataMap map = methodDataMapList.get(argumentPos);
-
-            String type = map.getString(PARAM_TYPE);
-            switch (type) {
-                case (TYPE_INT):
-                    methodDecoded.params[argumentPos] = map.getInt(PARAM_VALUE);
-                    break;
-                case (TYPE_FLOAT):
-                    methodDecoded.params[argumentPos] = map.getFloat(PARAM_VALUE);
-                    break;
-                case (TYPE_DOUBLE):
-                    methodDecoded.params[argumentPos] = map.getDouble(PARAM_VALUE);
-                    break;
-                case (TYPE_LONG):
-                    methodDecoded.params[argumentPos] = map.getLong(PARAM_VALUE);
-                    break;
-                case (TYPE_STRING):
-                    methodDecoded.params[argumentPos] = map.getString(PARAM_VALUE);
-                    break;
-                default: {
-                    String value = map.getString(PARAM_VALUE);
-                    Object deserialized = SerialisationUtils.deserialize(Class.forName(type), value);
-                    methodDecoded.params[argumentPos] = deserialized;
-                }
-            }
-        }
-
-        return methodDecoded;
-    }
-
-
-    private class MethodDecoded {
-        public String name;
-        public Object[] params;
+        return methodsList;
     }
 
     //@Override
@@ -230,7 +195,6 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
                 try {
 
                     DataMap methodDataMap = DataMapItem.fromDataItem(dataEvent.getDataItem()).getDataMap();
-                    MethodDecoded methodDecoded = decodeMethodDataMap(methodDataMap);
                     callMethodOnInterfaces(methodDataMap);
 
                 } catch (Throwable t) {
@@ -368,8 +332,10 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
         Wearable.MessageApi.addListener(mApiClient, this);
         Wearable.DataApi.addListener(mApiClient, this);
 
-        if (waitingItems != null && !waitingItems.isEmpty())
+        if (waitingItems != null && !waitingItems.isEmpty()){
             sendDataMapRequests(waitingItems);
+            waitingItems.clear();
+        }
     }
 
     @Override

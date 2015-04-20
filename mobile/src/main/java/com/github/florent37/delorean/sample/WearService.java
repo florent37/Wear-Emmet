@@ -20,7 +20,7 @@ public class WearService extends WearableListenerService implements GoogleApiCli
         super.onCreate();
         deLorean.onCreate(this);
 
-        deLorean.implement(WearProtocol.class,new WearProtocol() {
+        deLorean.registerReceiver(WearProtocol.class,new WearProtocol() {
             @Override
             public void sayHello() {
                 Log.d(TAG,"sayHello");
@@ -28,7 +28,7 @@ public class WearService extends WearableListenerService implements GoogleApiCli
 
             @Override
             public void sayGoodbye(int delay, String text, MyObject myObject) {
-                Log.d(TAG,"sayGoodbye"+delay+" "+text+" "+myObject.getName());
+                Log.d(TAG,"sayGoodbye "+delay+" "+text+" "+myObject.getName());
             }
         });
     }

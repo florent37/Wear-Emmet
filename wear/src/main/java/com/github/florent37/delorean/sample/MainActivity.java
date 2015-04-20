@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 
         deLorean.onCreate(this);
 
-        WearProtocol wearProtocol = deLorean.create(WearProtocol.class);
+        WearProtocol wearProtocol = deLorean.registerSender(WearProtocol.class);
         wearProtocol.sayHello();
         wearProtocol.sayGoodbye(3,"bye", new MyObject("DeLorean"));
     }
