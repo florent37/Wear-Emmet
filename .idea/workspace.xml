@@ -62,40 +62,40 @@
       <file leaf-file-name="DeLorean.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deloreanWear/src/main/java/com/github/florent37/DeLorean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4390" max-vertical-offset="5355">
-              <caret line="351" column="1" selection-start-line="351" selection-start-column="1" selection-end-line="351" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="930" max-vertical-offset="5355">
+              <caret line="68" column="29" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#11213#11642#0" expanded="true" />
-                <element signature="e#11623#11624#0" expanded="true" />
-                <element signature="e#11926#12390#0" expanded="true" />
-                <element signature="e#12379#12380#0" expanded="true" />
+                <element signature="e#11211#11640#0" expanded="true" />
+                <element signature="e#11621#11622#0" expanded="true" />
+                <element signature="e#11924#12388#0" expanded="true" />
+                <element signature="e#12377#12378#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wear/src/main/java/com/github/florent37/delorean/sample/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="510">
-              <caret line="31" column="60" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.4409938" vertical-offset="27" max-vertical-offset="510">
+              <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeLorean.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DeLorean.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deloreanMobile/src/main/java/com/github/florent37/DeLorean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76382977" vertical-offset="1336" max-vertical-offset="5355">
-              <caret line="113" column="58" selection-start-line="113" selection-start-column="58" selection-end-line="113" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="5355">
+              <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#11213#11642#0" expanded="true" />
-                <element signature="e#11623#11624#0" expanded="true" />
-                <element signature="e#11926#12390#0" expanded="true" />
-                <element signature="e#12379#12380#0" expanded="true" />
+                <element signature="e#11211#11640#0" expanded="true" />
+                <element signature="e#11621#11622#0" expanded="true" />
+                <element signature="e#11924#12388#0" expanded="true" />
+                <element signature="e#12377#12378#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -3693,11 +3693,11 @@
         <option value="$PROJECT_DIR$/mobile/src/main/java/com/github/florent37/delorean/sample/WearProtocol.java" />
         <option value="$PROJECT_DIR$/mobile/src/main/java/com/github/florent37/delorean/sample/MyObject.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/wear/src/main/java/com/github/florent37/delorean/sample/MainActivity.java" />
         <option value="$PROJECT_DIR$/deloreanWear/build.gradle" />
         <option value="$PROJECT_DIR$/mobile/src/main/java/com/github/florent37/delorean/sample/WearService.java" />
-        <option value="$PROJECT_DIR$/deloreanMobile/src/main/java/com/github/florent37/DeLorean.java" />
         <option value="$PROJECT_DIR$/deloreanWear/src/main/java/com/github/florent37/DeLorean.java" />
+        <option value="$PROJECT_DIR$/deloreanMobile/src/main/java/com/github/florent37/DeLorean.java" />
+        <option value="$PROJECT_DIR$/wear/src/main/java/com/github/florent37/delorean/sample/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -4907,14 +4907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wear/src/main/java/com/github/florent37/delorean/sample/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="510">
-          <caret line="31" column="60" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.7777777" vertical-offset="135" max-vertical-offset="1335">
@@ -4958,31 +4950,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deloreanWear/src/main/java/com/github/florent37/DeLorean.java">
+    <entry file="file://$PROJECT_DIR$/deloreanMobile/src/main/java/com/github/florent37/DeLorean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4390" max-vertical-offset="5355">
-          <caret line="351" column="1" selection-start-line="351" selection-start-column="1" selection-end-line="351" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="5355">
+          <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11213#11642#0" expanded="true" />
-            <element signature="e#11623#11624#0" expanded="true" />
-            <element signature="e#11926#12390#0" expanded="true" />
-            <element signature="e#12379#12380#0" expanded="true" />
+            <element signature="e#11211#11640#0" expanded="true" />
+            <element signature="e#11621#11622#0" expanded="true" />
+            <element signature="e#11924#12388#0" expanded="true" />
+            <element signature="e#12377#12378#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deloreanMobile/src/main/java/com/github/florent37/DeLorean.java">
+    <entry file="file://$PROJECT_DIR$/deloreanWear/src/main/java/com/github/florent37/DeLorean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76382977" vertical-offset="1336" max-vertical-offset="5355">
-          <caret line="113" column="58" selection-start-line="113" selection-start-column="58" selection-end-line="113" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="930" max-vertical-offset="5355">
+          <caret line="68" column="29" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11213#11642#0" expanded="true" />
-            <element signature="e#11623#11624#0" expanded="true" />
-            <element signature="e#11926#12390#0" expanded="true" />
-            <element signature="e#12379#12380#0" expanded="true" />
+            <element signature="e#11211#11640#0" expanded="true" />
+            <element signature="e#11621#11622#0" expanded="true" />
+            <element signature="e#11924#12388#0" expanded="true" />
+            <element signature="e#12377#12378#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wear/src/main/java/com/github/florent37/delorean/sample/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4409938" vertical-offset="27" max-vertical-offset="510">
+          <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>

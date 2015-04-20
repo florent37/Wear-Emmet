@@ -66,7 +66,7 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
             mApiClient.disconnect();
     }
 
-    public <T> T registerSender(Class<T> protocol) {
+    public <T> T createSender(Class<T> protocol) {
         return (T) Proxy.newProxyInstance(protocol.getClassLoader(), new Class<?>[]{protocol},
                 new DeLoreanInvocationHandler());
     }
