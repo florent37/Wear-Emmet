@@ -80,17 +80,69 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
 
     //region reciever
 
-    private void callMethodOnInterfaces(final String name, final Object[] params) {
+    private void callMethodOnInterfaces(final String name) {
         for (Object theInterface : interfaces) {
-            callMethodOnObject(theInterface, name, params);
+            callMethodOnObject(theInterface, name);
         }
     }
 
-    private void callMethodOnObject(final Object object, final String name, final Object[] params) {
+    private void callMethodOnObject(final Object object, final String name) {
         try {
-            Method method = object.getClass().getMethod(name, getParametersType(params));
+            Method method = object.getClass().getMethod(name);
             if (method != null)
-                method.invoke(object, params);
+                method.invoke(object);
+        } catch (Exception e) {
+            Log.e(TAG, "callMethodOnObject error", e);
+        }
+    }
+
+    private void callMethodOnInterfaces(final DataMap methodDataMap) {
+        for (Object theInterface : interfaces) {
+            callMethodOnObject(theInterface, methodDataMap);
+        }
+    }
+
+    private void callMethodOnObject(final Object object, final DataMap methodDataMap) {
+
+        String methodName = methodDataMap.getString(METHOD_NAME);
+
+        try {
+            Method method = getMethodWithName(object, methodName);
+            if (method != null){
+                ArrayList<DataMap> methodDataMapList = methodDataMap.getDataMapArrayList(METHOD_PARAMS);
+                int nbArgs = methodDataMapList.size();
+
+                Object[] params = new Object[nbArgs];
+
+                for (int argumentPos = 0; argumentPos < nbArgs; ++argumentPos) {
+                    Class paramClass = method.getParameterTypes()[argumentPos];
+
+                    DataMap map = methodDataMapList.get(argumentPos);
+
+                    String type = map.getString(PARAM_TYPE);
+                    switch (type) {
+                        case (TYPE_INT):
+                            params[argumentPos] = map.getInt(PARAM_VALUE);
+                            break;
+                        case (TYPE_FLOAT):
+                            params[argumentPos] = map.getFloat(PARAM_VALUE);
+                            break;
+                        case (TYPE_DOUBLE):
+                            params[argumentPos] = map.getDouble(PARAM_VALUE);
+                            break;
+                        case (TYPE_LONG):
+                            params[argumentPos] = map.getLong(PARAM_VALUE);
+                            break;
+                        case (TYPE_STRING):
+                            params[argumentPos] = map.getString(PARAM_VALUE);
+                            break;
+                        default: {
+                            Object deserialized = SerialisationUtils.deserialize(paramClass, map.getString(PARAM_VALUE));
+                            params[argumentPos] = deserialized;
+                        }
+                    }
+                }
+            }
         } catch (Exception e) {
             Log.e(TAG, "callMethodOnObject error", e);
         }
@@ -103,6 +155,14 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
             types[paramPos] = params[paramPos].getClass();
         }
         return types;
+    }
+
+    private Method getMethodWithName(final Object object, final String name) {
+        for (Method method : object.getClass().getDeclaredMethods()) {
+            if (method.getName().equals(name))
+                return method;
+        }
+        return null;
     }
 
     private MethodDecoded decodeMethodDataMap(DataMap methodDataMap) throws Throwable {
@@ -119,24 +179,24 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
 
             String type = map.getString(PARAM_TYPE);
             switch (type) {
-                case(TYPE_INT):
+                case (TYPE_INT):
                     methodDecoded.params[argumentPos] = map.getInt(PARAM_VALUE);
                     break;
-                case(TYPE_FLOAT):
+                case (TYPE_FLOAT):
                     methodDecoded.params[argumentPos] = map.getFloat(PARAM_VALUE);
                     break;
-                case(TYPE_DOUBLE):
+                case (TYPE_DOUBLE):
                     methodDecoded.params[argumentPos] = map.getDouble(PARAM_VALUE);
                     break;
-                case(TYPE_LONG):
+                case (TYPE_LONG):
                     methodDecoded.params[argumentPos] = map.getLong(PARAM_VALUE);
                     break;
-                case(TYPE_STRING):
+                case (TYPE_STRING):
                     methodDecoded.params[argumentPos] = map.getString(PARAM_VALUE);
                     break;
                 default: {
                     String value = map.getString(PARAM_VALUE);
-                    Object deserialized = SerialisationUtils.deserialize(Class.forName(type),value);
+                    Object deserialized = SerialisationUtils.deserialize(Class.forName(type), value);
                     methodDecoded.params[argumentPos] = deserialized;
                 }
             }
@@ -155,7 +215,7 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
     public void onMessageReceived(MessageEvent messageEvent) {
         if (messageEvent.getPath().startsWith(PATH)) {
             String messageName = new String(messageEvent.getData());
-            callMethodOnInterfaces(messageName, null);
+            callMethodOnInterfaces(messageName);
         }
     }
 
@@ -171,7 +231,7 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
 
                     DataMap methodDataMap = DataMapItem.fromDataItem(dataEvent.getDataItem()).getDataMap();
                     MethodDecoded methodDecoded = decodeMethodDataMap(methodDataMap);
-                    callMethodOnInterfaces(methodDecoded.name, methodDecoded.params);
+                    callMethodOnInterfaces(methodDataMap);
 
                 } catch (Throwable t) {
                     Log.e(TAG, "error decoding datamap", t);
@@ -180,9 +240,9 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
         }
     }
 
-    //endregion
+//endregion
 
-    //region sender
+//region sender
 
     private class DeLoreanInvocationHandler implements InvocationHandler {
 
@@ -221,22 +281,21 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
                     Object argument = args[argumentPos];
 
                     if (argument instanceof Integer) {
-                        map.putString(PARAM_TYPE,TYPE_INT);
-                        map.putInt(PARAM_VALUE,(Integer)argument);
+                        map.putString(PARAM_TYPE, TYPE_INT);
+                        map.putInt(PARAM_VALUE, (Integer) argument);
                     } else if (argument instanceof Float) {
-                        map.putString(PARAM_TYPE,TYPE_FLOAT);
+                        map.putString(PARAM_TYPE, TYPE_FLOAT);
                         map.putFloat(PARAM_VALUE, (Float) argument);
                     } else if (argument instanceof Double) {
-                        map.putString(PARAM_TYPE,TYPE_DOUBLE);
+                        map.putString(PARAM_TYPE, TYPE_DOUBLE);
                         map.putDouble(PARAM_VALUE, (Double) argument);
                     } else if (argument instanceof Long) {
-                        map.putString(PARAM_TYPE,TYPE_LONG);
+                        map.putString(PARAM_TYPE, TYPE_LONG);
                         map.putLong(PARAM_VALUE, (Long) argument);
                     } else if (argument instanceof String) {
-                        map.putString(PARAM_TYPE,TYPE_STRING);
-                        map.putString(PARAM_VALUE,(String)argument);
-                    } else
-                    {
+                        map.putString(PARAM_TYPE, TYPE_STRING);
+                        map.putString(PARAM_VALUE, (String) argument);
+                    } else {
 
                         if (argument instanceof Serializable) {
                             map.putString(PARAM_TYPE, argument.getClass().getName());
@@ -262,6 +321,7 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
                 }
             }
         }
+
     }
 
     private void sendDataMapRequest(PutDataMapRequest request) {
@@ -280,7 +340,7 @@ public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi
     }
 
     private void sendDataMapRequests(List<PutDataMapRequest> requests) {
-        for(PutDataMapRequest request : requests)
+        for (PutDataMapRequest request : requests)
             sendDataMapRequest(request);
     }
 
