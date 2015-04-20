@@ -176,6 +176,11 @@ Wear
 
 If you want to learn wear development : [http://tutos-android-france.com/developper-une-application-pour-les-montres-android-wear/][tuto_wear].
 
+Dependencies
+--------
+
+- GSON from Google : [https://github.com/google/gson][gson]
+
 Credits
 -------
 
@@ -222,3 +227,4 @@ License
 
 [snap]: https://oss.sonatype.org/content/repositories/snapshots/
 [tuto_wear]: http://tutos-android-france.com/developper-une-application-pour-les-montres-android-wear/
+[gson]: https://github.com/google/gson
