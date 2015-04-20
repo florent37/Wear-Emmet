@@ -1,0 +1,52 @@
+public interface WearProtocol{
+	
+	public void sayHello();
+
+	public void sayGoodbye(int delay, String text, MyObject object);
+
+}
+
+Smartphone : 
+
+WearProtocol protocol = DeLorean.create(WearProtocol.class);
+protocol.sayHello();
+protocol.sayGoodby(3,"bye",object);
+
+Wear :
+
+DeLorean.implement(WearProtocol.class,new WearProtocol(){
+	public void sayHello(){
+
+	}
+	public void sayGoodbye(int delay, String text, MyObject object){
+
+	}
+});
+
+
+
+public <T> T create(Class<T> service) {
+    return (T) Proxy.newProxyInstance(service.getClassLoader(), new Class<?>[] { service },
+        new RestHandler(getMethodInfoCache(service)));
+}
+
+sayHello -> [message]sayHello
+sayGoodbye -> 
+	{
+		"name" : "sayGoodbye",
+		"params" : 
+			{
+				"1" : {
+					"type" : "int"
+					"value" : delay
+				},
+				"2" : {
+					"type" : "String"
+					"value" : text
+				},
+				"2" : {
+					"type" : "Serialized"
+					"value" : object
+				}
+			}
+	}
