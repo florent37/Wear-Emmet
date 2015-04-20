@@ -37,6 +37,7 @@ Setup
 --------
 
 **Wear - Activity**
+
 To use DeLorean, you have to create an new instance for each activity
 and attach it to his life-cycle
 
