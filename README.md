@@ -33,6 +33,25 @@ public interface WearProtocol{
 
 Then copy it in your 2 modules.
 
+Don't forget to copy your models into the two modules
+```java
+public class MyObject implements Serializable{
+    private String name;
+
+    public MyObject(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+```
+
 Setup
 --------
 
