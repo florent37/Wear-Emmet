@@ -89,7 +89,6 @@
       <patterns />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="false" />
-        <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list size="0" />

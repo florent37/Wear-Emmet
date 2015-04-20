@@ -3,8 +3,6 @@ DeLorean
 
 [![Build Status](https://travis-ci.org/florent37/DeLorean.svg)](https://travis-ci.org/florent37/DeLorean)
 
-![alt poster](https://raw.github.com/florent37/WearMenu/master/wear/src/main/res/drawable/wearmenu_small.png)
-
 WORK IN PROGRESS
 
 Download
