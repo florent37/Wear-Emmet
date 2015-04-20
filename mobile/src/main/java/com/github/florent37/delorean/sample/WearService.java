@@ -9,7 +9,7 @@ import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
-public class WearService extends WearableListenerService implements GoogleApiClient.ConnectionCallbacks {
+public class WearService extends WearableListenerService {
 
     private final static String TAG = WearService.class.getCanonicalName();
 
@@ -49,14 +49,5 @@ public class WearService extends WearableListenerService implements GoogleApiCli
     public void onDataChanged(DataEventBuffer dataEvents) {
         super.onDataChanged(dataEvents);
         deLorean.onDataChanged(dataEvents);
-    }
-
-    @Override
-    public void onConnected(Bundle bundle) {
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
     }
 }

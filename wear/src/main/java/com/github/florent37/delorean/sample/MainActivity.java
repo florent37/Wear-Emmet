@@ -19,7 +19,6 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private final static String TAG = MainActivity.class.getCanonicalName();
     private DeLorean deLorean =  new DeLorean();
 
     @Override

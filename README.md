@@ -21,7 +21,90 @@ repositories {
 Usage
 --------
 
+To send datas from Wear to Smartphone
 
+Create a protocol
+```java
+public interface WearProtocol{
+    public void sayHello();
+
+    public void sayGoodbye(int delay, String text, MyObject myObject);
+}
+```
+
+Copy it in your wear module, and create a Sender
+```java
+public class MainActivity extends Activity {
+
+    private DeLorean deLorean =  new DeLorean();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        deLorean.onCreate(this);
+
+        WearProtocol wearProtocol = deLorean.createSender(WearProtocol.class);
+        wearProtocol.sayHello();
+        wearProtocol.sayGoodbye(3,"bye", new MyObject("DeLorean"));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        deLorean.onDestroy();
+    }
+}
+```
+
+Copy your protocol in your smartphone module.
+To receive datas on your Smartphone Service, register a Receiver
+
+```java
+public class WearService extends WearableListenerService {
+
+    private final static String TAG = WearService.class.getCanonicalName();
+
+    protected DeLorean deLorean = new DeLorean();
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        deLorean.onCreate(this);
+
+        deLorean.registerReceiver(WearProtocol.class,new WearProtocol() {
+            @Override
+            public void sayHello() {
+                Log.d(TAG,"sayHello");
+            }
+
+            @Override
+            public void sayGoodbye(int delay, String text, MyObject myObject) {
+                Log.d(TAG,"sayGoodbye "+delay+" "+text+" "+myObject.getName());
+            }
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        deLorean.onDestroy();
+    }
+
+    @Override
+    public void onMessageReceived(MessageEvent messageEvent) {
+        super.onMessageReceived(messageEvent);
+        deLorean.onMessageReceived(messageEvent);
+    }
+
+    @Override
+    public void onDataChanged(DataEventBuffer dataEvents) {
+        super.onDataChanged(dataEvents);
+        deLorean.onDataChanged(dataEvents);
+    }
+}
+```
 
 TODO
 --------
