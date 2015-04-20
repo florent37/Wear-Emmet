@@ -114,7 +114,7 @@ And simply call method on the implemented protocol
 ```java
 wearProtocol.sayHello();
 ```
-can be used with parameters
+Can be used with parameters
 ```java
 wearProtocol.sayGoodbye(3,"bye", new MyObject("DeLorean"));
 ```
