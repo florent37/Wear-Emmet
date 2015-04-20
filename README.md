@@ -35,7 +35,7 @@ Then copy it in your 2 modules.
 
 Don't forget to copy your models into the two modules
 ```java
-public class MyObject implements Serializable{
+public class MyObject{
     private String name;
 
     public MyObject(String name) {

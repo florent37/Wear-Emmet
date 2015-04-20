@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by florentchampigny on 20/04/15.
  */
-public class MyObject implements Serializable{
+public class MyObject{
     private String name;
 
     public MyObject(String name) {
