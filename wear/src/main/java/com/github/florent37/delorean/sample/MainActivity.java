@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private DeLorean deLorean =  new DeLorean();
+    private DeLorean deLorean = new DeLorean();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
