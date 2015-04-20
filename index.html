@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Delorean by florent37</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Delorean</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/florent37/DeLorean" class="btn">View on GitHub</a>
+      <a href="https://github.com/florent37/DeLorean/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/florent37/DeLorean/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="delorean" class="anchor" href="#delorean" aria-hidden="true"><span class="octicon octicon-link"></span></a>DeLorean</h1>
+
+<p><a href="https://travis-ci.org/florent37/DeLorean"><img src="https://travis-ci.org/florent37/DeLorean.svg" alt="Build Status"></a></p>
+
+<p>WORK IN PROGRESS</p>
+
+<h2>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download</h2>
+
+<p>In your root build.gradle add</p>
+
+<div class="highlight highlight-groovy"><pre>repositories {
+    maven {
+        url  <span class="pl-s"><span class="pl-pds">"</span>http://dl.bintray.com/florent37/maven<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
+
+<h2>
+<a id="protocol-based-exchange" class="anchor" href="#protocol-based-exchange" aria-hidden="true"><span class="octicon octicon-link"></span></a>Protocol-based Exchange</h2>
+
+<p>DeLorean il based on data exchanges by protocol.
+You have to create your protocol, wich will be used by your wear and smartphone module.</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">interface</span> <span class="pl-en">WearProtocol</span>{
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayHello</span>();
+
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayGoodbye</span>(<span class="pl-k">int</span> <span class="pl-v">delay</span>, <span class="pl-smi">String</span> <span class="pl-v">text</span>, <span class="pl-smi">MyObject</span> <span class="pl-v">myObject</span>);
+}</pre></div>
+
+<p>Then copy it in your 2 modules.</p>
+
+<p>Don't forget to copy your models into the two modules</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyObject</span>{
+    <span class="pl-k">private</span> <span class="pl-smi">String</span> name;
+
+    <span class="pl-k">public</span> <span class="pl-en">MyObject</span>(<span class="pl-smi">String</span> <span class="pl-v">name</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>name <span class="pl-k">=</span> name;
+    }
+
+    <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">getName</span>() {
+        <span class="pl-k">return</span> name;
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setName</span>(<span class="pl-smi">String</span> <span class="pl-v">name</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>name <span class="pl-k">=</span> name;
+    }
+}</pre></div>
+
+<h2>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
+
+<p><strong>Wear - Activity</strong></p>
+
+<p>To use DeLorean, you have to create an new instance for each activity
+and attach it to his life-cycle</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MainActivity</span> <span class="pl-k">extends</span> <span class="pl-e">Activity</span> {
+
+    <span class="pl-k">private</span> <span class="pl-smi">DeLorean</span> deLorean <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DeLorean</span>();
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">protected</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>(<span class="pl-smi">Bundle</span> <span class="pl-v">savedInstanceState</span>) {
+        <span class="pl-v">super</span><span class="pl-k">.</span>onCreate(savedInstanceState);
+        setContentView(<span class="pl-smi">R</span><span class="pl-k">.</span>layout<span class="pl-k">.</span>activity_main);
+
+        deLorean<span class="pl-k">.</span>onCreate(<span class="pl-v">this</span>);
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">protected</span> <span class="pl-k">void</span> <span class="pl-en">onDestroy</span>() {
+        <span class="pl-v">super</span><span class="pl-k">.</span>onDestroy();
+        deLorean<span class="pl-k">.</span>onDestroy();
+    }
+}</pre></div>
+
+<p><strong>Smartphone - Service</strong></p>
+
+<p>Create an new instance in the WearableListenerService
+and attach it to his life-cycle,
+don't foget to dispatch onMessageReceived(x) and onDataChanged(x)</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">WearService</span> <span class="pl-k">extends</span> <span class="pl-e">WearableListenerService</span> {
+
+    <span class="pl-k">private</span> <span class="pl-smi">DeLorean</span> deLorean <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DeLorean</span>();
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>() {
+        <span class="pl-v">super</span><span class="pl-k">.</span>onCreate();
+        deLorean<span class="pl-k">.</span>onCreate(<span class="pl-v">this</span>);
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onDestroy</span>() {
+        <span class="pl-v">super</span><span class="pl-k">.</span>onDestroy();
+        deLorean<span class="pl-k">.</span>onDestroy();
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onMessageReceived</span>(<span class="pl-smi">MessageEvent</span> <span class="pl-v">messageEvent</span>) {
+        <span class="pl-v">super</span><span class="pl-k">.</span>onMessageReceived(messageEvent);
+        <span class="pl-c">//on WearableListenerService you have to dispatch onMessageReceived(x)</span>
+        deLorean<span class="pl-k">.</span>onMessageReceived(messageEvent);
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onDataChanged</span>(<span class="pl-smi">DataEventBuffer</span> <span class="pl-v">dataEvents</span>) {
+        <span class="pl-v">super</span><span class="pl-k">.</span>onDataChanged(dataEvents);
+        <span class="pl-c">//on WearableListenerService you have to dispatch onDataChanged(x)</span>
+        deLorean<span class="pl-k">.</span>onDataChanged(dataEvents);
+    }
+}</pre></div>
+
+<h2>
+<a id="send-datas" class="anchor" href="#send-datas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Send datas</h2>
+
+<p>To send datas, just create a Sender</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-smi">WearProtocol</span> wearProtocol <span class="pl-k">=</span> deLorean<span class="pl-k">.</span>createSender(<span class="pl-smi">WearProtocol</span><span class="pl-k">.</span>class);</pre></div>
+
+<p>And simply call method on the implemented protocol</p>
+
+<div class="highlight highlight-java"><pre>wearProtocol<span class="pl-k">.</span>sayHello();</pre></div>
+
+<p>Can be used with parameters</p>
+
+<div class="highlight highlight-java"><pre>wearProtocol<span class="pl-k">.</span>sayGoodbye(<span class="pl-c1">3</span>,<span class="pl-s"><span class="pl-pds">"</span>bye<span class="pl-pds">"</span></span>, <span class="pl-k">new</span> <span class="pl-smi">MyObject</span>(<span class="pl-s"><span class="pl-pds">"</span>DeLorean<span class="pl-pds">"</span></span>));</pre></div>
+
+<h2>
+<a id="receive-datas" class="anchor" href="#receive-datas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Receive datas</h2>
+
+<p>To receive datas, simply register a Receiver</p>
+
+<div class="highlight highlight-java"><pre>deLorean<span class="pl-k">.</span>registerReceiver(<span class="pl-smi">WearProtocol</span><span class="pl-k">.</span>class,<span class="pl-k">new</span> <span class="pl-smi">WearProtocol</span>() {
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayHello</span>() {
+        <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>,<span class="pl-s"><span class="pl-pds">"</span>sayHello<span class="pl-pds">"</span></span>);
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayGoodbye</span>(<span class="pl-k">int</span> <span class="pl-v">delay</span>, <span class="pl-smi">String</span> <span class="pl-v">text</span>, <span class="pl-smi">MyObject</span> <span class="pl-v">myObject</span>) {
+        <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>,<span class="pl-s"><span class="pl-pds">"</span>sayGoodbye <span class="pl-pds">"</span></span><span class="pl-k">+</span>delay<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span><span class="pl-k">+</span>text<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span><span class="pl-k">+</span>myObject<span class="pl-k">.</span>getName());
+    }
+});</pre></div>
+
+<p>Or directly implement it</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">WearService</span> <span class="pl-k">extends</span> <span class="pl-e">WearableListenerService</span> <span class="pl-k">implements</span> <span class="pl-e">WearProtocol</span> {
+    <span class="pl-c1">...</span>
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>() {
+        <span class="pl-v">super</span><span class="pl-k">.</span>onCreate();
+        deLorean<span class="pl-k">.</span>onCreate(<span class="pl-v">this</span>);
+        deLorean<span class="pl-k">.</span>registerReceiver(<span class="pl-smi">WearProtocol</span><span class="pl-k">.</span>class,<span class="pl-v">this</span>);
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayHello</span>() {
+        <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>,<span class="pl-s"><span class="pl-pds">"</span>sayHello<span class="pl-pds">"</span></span>);
+    }
+
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayGoodbye</span>(<span class="pl-k">int</span> <span class="pl-v">delay</span>, <span class="pl-smi">String</span> <span class="pl-v">text</span>, <span class="pl-smi">MyObject</span> <span class="pl-v">myObject</span>) {
+        <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>,<span class="pl-s"><span class="pl-pds">"</span>sayGoodbye <span class="pl-pds">"</span></span><span class="pl-k">+</span>delay<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span><span class="pl-k">+</span>text<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span><span class="pl-k">+</span>myObject<span class="pl-k">.</span>getName());
+    }
+    <span class="pl-c1">...</span>
+}</pre></div>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<h2>
+<a id="community" class="anchor" href="#community" aria-hidden="true"><span class="octicon octicon-link"></span></a>Community</h2>
+
+<p>Looking for contributors, feel free to fork !</p>
+
+<h2>
+<a id="wear" class="anchor" href="#wear" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wear</h2>
+
+<p>If you want to learn wear development : <a href="http://tutos-android-france.com/developper-une-application-pour-les-montres-android-wear/">http://tutos-android-france.com/developper-une-application-pour-les-montres-android-wear/</a>.</p>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li>GSON from Google : <a href="https://github.com/google/gson">https://github.com/google/gson</a>
+</li>
+</ul>
+
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<p>Author: Florent Champigny</p>
+
+<p><a href="https://plus.google.com/+florentchampigny">
+  <img alt="Follow me on Google+" src="https://raw.githubusercontent.com/florent37/DaVinci/master/mobile/src/main/res/drawable-hdpi/gplus.png">
+</a>
+<a href="https://twitter.com/florent_champ">
+  <img alt="Follow me on Twitter" src="https://raw.githubusercontent.com/florent37/DaVinci/master/mobile/src/main/res/drawable-hdpi/twitter.png">
+</a>
+<a href="https://www.linkedin.com/profile/view?id=297860624">
+  <img alt="Follow me on LinkedIn" src="https://raw.githubusercontent.com/florent37/DaVinci/master/mobile/src/main/res/drawable-hdpi/linkedin.png">
+</a></p>
+
+<p>Pictures by Logan Bourgouin</p>
+
+<p><a href="https://plus.google.com/+LoganBOURGOIN">
+  <img alt="Follow me on Google+" src="https://raw.githubusercontent.com/florent37/DaVinci/master/mobile/src/main/res/drawable-hdpi/gplus.png">
+</a></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<pre><code>Copyright 2015 florent37, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/florent37/DeLorean">Delorean</a> is maintained by <a href="https://github.com/florent37">florent37</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
