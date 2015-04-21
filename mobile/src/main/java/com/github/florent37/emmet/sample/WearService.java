@@ -1,5 +1,7 @@
 package com.github.florent37.emmet.sample;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
 
 import com.github.florent37.EmmetWearableListenerService;
@@ -9,6 +11,8 @@ import com.github.florent37.protocol.WearProtocol;
 public class WearService extends EmmetWearableListenerService implements WearProtocol {
 
     private final static String TAG = WearService.class.getCanonicalName();
+
+    private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     public void onCreate() {
@@ -31,14 +35,23 @@ public class WearService extends EmmetWearableListenerService implements WearPro
         getEmmet().registerReceiver(WearProtocol.class, this);
     }
 
+    private void show(final String text){
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(WearService.this, text, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     @Override
     public void sayHello() {
-        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+        show("hello");
     }
 
     @Override
     public void sayGoodbye(int delay, String text, MyObject myObject) {
-        Toast.makeText(this, delay + " " + text + " " + myObject.getName(), Toast.LENGTH_SHORT).show();
+        show(delay + " " + text + " " + myObject.getName());
     }
 
 }

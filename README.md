@@ -107,47 +107,11 @@ public class WearService extends EmmetWearableListenerService implements WearPro
 }
 ```
 
-Or Create an ew instance in the WearableListenerService
-and attach it to his life-cycle,
-don't foget to dispatch onMessageReceived(x) and onDataChanged(x)
-
-```java
-public class WearService extends WearableListenerService {
-
-    private Emmet emmet = new Emmet();
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        emmet.onCreate(this);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        emmet.onDestroy();
-    }
-
-    @Override
-    public void onMessageReceived(MessageEvent messageEvent) {
-        super.onMessageReceived(messageEvent);
-        //on WearableListenerService you have to dispatch onMessageReceived(x)
-        emmet.onMessageReceived(messageEvent);
-    }
-
-    @Override
-    public void onDataChanged(DataEventBuffer dataEvents) {
-        super.onDataChanged(dataEvents);
-        //on WearableListenerService you have to dispatch onDataChanged(x)
-        emmet.onDataChanged(dataEvents);
-    }
-}
-```
-
 Send datas
 --------
 
 To send datas, just create a Sender
+*(can be used from Wear or Smartphone)*
 
 ```java
 WearProtocol wearProtocol = emmet.createSender(WearProtocol.class);
@@ -166,9 +130,10 @@ Receive datas
 --------
 
 To receive datas, simply register a Receiver
+*(can be used from Wear or Smartphone)*
 
 ```java
-getEmmet().registerReceiver(WearProtocol.class,new WearProtocol() {
+emmet.registerReceiver(WearProtocol.class,new WearProtocol() {
     @Override
     public void sayHello() {
         Log.d(TAG,"sayHello");
@@ -183,7 +148,7 @@ getEmmet().registerReceiver(WearProtocol.class,new WearProtocol() {
 
 Or directly implement it
 ```java
-public class WearService extends EmmetWearableListenerService implements WearProtocol {
+public class **** implements WearProtocol {
 
     @Override
     public void onCreate() {
