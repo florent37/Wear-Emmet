@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Delorean by florent37</title>
+    <title>Emmet by florent37</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -11,18 +11,18 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">Delorean</h1>
+      <h1 class="project-name">Emmet</h1>
       <h2 class="project-tagline"></h2>
-      <a href="https://github.com/florent37/DeLorean" class="btn">View on GitHub</a>
-      <a href="https://github.com/florent37/DeLorean/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/florent37/DeLorean/tarball/master" class="btn">Download .tar.gz</a>
+      <a href="https://github.com/florent37/Emmet" class="btn">View on GitHub</a>
+      <a href="https://github.com/florent37/Emmet/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/florent37/Emmet/tarball/master" class="btn">Download .tar.gz</a>
     </section>
 
     <section class="main-content">
       <h1>
-<a id="delorean" class="anchor" href="#delorean" aria-hidden="true"><span class="octicon octicon-link"></span></a>DeLorean</h1>
+<a id="emmet" class="anchor" href="#emmet" aria-hidden="true"><span class="octicon octicon-link"></span></a>Emmet</h1>
 
-<p><a href="https://travis-ci.org/florent37/DeLorean"><img src="https://travis-ci.org/florent37/DeLorean.svg" alt="Build Status"></a></p>
+<p><a href="https://travis-ci.org/florent37/Emmet"><img src="https://travis-ci.org/florent37/Emmet.svg" alt="Build Status"></a></p>
 
 <p>WORK IN PROGRESS</p>
 
@@ -40,8 +40,22 @@
 <h2>
 <a id="protocol-based-exchange" class="anchor" href="#protocol-based-exchange" aria-hidden="true"><span class="octicon octicon-link"></span></a>Protocol-based Exchange</h2>
 
-<p>DeLorean il based on data exchanges by protocol.
+<p>Emmet is based on data exchanges by protocol.
 You have to create your protocol, wich will be used by your wear and smartphone module.</p>
+
+<p>Create a new library module, for example <strong>wearprotocol</strong></p>
+
+<p>In the module wearprotocol and import <strong>emmet</strong></p>
+
+<p><a href="https://bintray.com/florent37/maven/Emmet/_latestVersion"><img src="https://api.bintray.com/packages/florent37/maven/Emmet/images/download.svg" alt="Download"></a></p>
+
+<div class="highlight highlight-java"><pre>dependencies {
+    import (<span class="pl-s"><span class="pl-pds">"</span>com.github.florent37:emmet:1.0.0@aar<span class="pl-pds">"</span></span>){
+        transitive<span class="pl-k">=</span><span class="pl-c1">true</span>
+    }
+}</pre></div>
+
+<p>Declare your protocol into an interface</p>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">interface</span> <span class="pl-en">WearProtocol</span>{
     <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayHello</span>();
@@ -49,9 +63,7 @@ You have to create your protocol, wich will be used by your wear and smartphone 
     <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayGoodbye</span>(<span class="pl-k">int</span> <span class="pl-v">delay</span>, <span class="pl-smi">String</span> <span class="pl-v">text</span>, <span class="pl-smi">MyObject</span> <span class="pl-v">myObject</span>);
 }</pre></div>
 
-<p>Then copy it in your 2 modules.</p>
-
-<p>Don't forget to copy your models into the two modules</p>
+<p>And add your shared models into this module</p>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyObject</span>{
     <span class="pl-k">private</span> <span class="pl-smi">String</span> name;
@@ -69,76 +81,64 @@ You have to create your protocol, wich will be used by your wear and smartphone 
     }
 }</pre></div>
 
+<p><img src="https://raw.githubusercontent.com/florent37/Emmet/master/mobile/src/main/res/drawable/module_protocol_small.png" alt="Alt wearprotocol"></p>
+
+<p>Then import <strong>wearprotocol</strong> into your watch &amp; smartphone modules</p>
+
+<div class="highlight highlight-java"><pre>dependencies {
+    compile project(<span class="pl-s"><span class="pl-pds">'</span>:wearprotocol<span class="pl-pds">'</span></span>)
+}</pre></div>
+
 <h2>
 <a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
 
 <p><strong>Wear - Activity</strong></p>
 
-<p>To use DeLorean, you have to create an new instance for each activity
+<p>To use Emmet, you have to create an new instance for each activity
 and attach it to his life-cycle</p>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MainActivity</span> <span class="pl-k">extends</span> <span class="pl-e">Activity</span> {
 
-    <span class="pl-k">private</span> <span class="pl-smi">DeLorean</span> deLorean <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DeLorean</span>();
+    <span class="pl-k">private</span> <span class="pl-smi">Emmet</span> emmet <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Emmet</span>();
 
     <span class="pl-k">@Override</span>
     <span class="pl-k">protected</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>(<span class="pl-smi">Bundle</span> <span class="pl-v">savedInstanceState</span>) {
         <span class="pl-v">super</span><span class="pl-k">.</span>onCreate(savedInstanceState);
         setContentView(<span class="pl-smi">R</span><span class="pl-k">.</span>layout<span class="pl-k">.</span>activity_main);
 
-        deLorean<span class="pl-k">.</span>onCreate(<span class="pl-v">this</span>);
+        emmet<span class="pl-k">.</span>onCreate(<span class="pl-v">this</span>);
     }
 
     <span class="pl-k">@Override</span>
     <span class="pl-k">protected</span> <span class="pl-k">void</span> <span class="pl-en">onDestroy</span>() {
         <span class="pl-v">super</span><span class="pl-k">.</span>onDestroy();
-        deLorean<span class="pl-k">.</span>onDestroy();
+        emmet<span class="pl-k">.</span>onDestroy();
     }
 }</pre></div>
 
 <p><strong>Smartphone - Service</strong></p>
 
-<p>Create an new instance in the WearableListenerService
-and attach it to his life-cycle,
-don't foget to dispatch onMessageReceived(x) and onDataChanged(x)</p>
+<p>Extend EmmetWearableListenerService</p>
 
-<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">WearService</span> <span class="pl-k">extends</span> <span class="pl-e">WearableListenerService</span> {
-
-    <span class="pl-k">private</span> <span class="pl-smi">DeLorean</span> deLorean <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DeLorean</span>();
+<div class="highlight highlight-java"><pre>
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">WearService</span> <span class="pl-k">extends</span> <span class="pl-e">EmmetWearableListenerService</span> <span class="pl-k">implements</span> <span class="pl-e">WearProtocol</span> {
 
     <span class="pl-k">@Override</span>
     <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>() {
         <span class="pl-v">super</span><span class="pl-k">.</span>onCreate();
-        deLorean<span class="pl-k">.</span>onCreate(<span class="pl-v">this</span>);
+
+        <span class="pl-smi">Emmet</span> emmet <span class="pl-k">=</span> getEmmet();
     }
 
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onDestroy</span>() {
-        <span class="pl-v">super</span><span class="pl-k">.</span>onDestroy();
-        deLorean<span class="pl-k">.</span>onDestroy();
-    }
-
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onMessageReceived</span>(<span class="pl-smi">MessageEvent</span> <span class="pl-v">messageEvent</span>) {
-        <span class="pl-v">super</span><span class="pl-k">.</span>onMessageReceived(messageEvent);
-        <span class="pl-c">//on WearableListenerService you have to dispatch onMessageReceived(x)</span>
-        deLorean<span class="pl-k">.</span>onMessageReceived(messageEvent);
-    }
-
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onDataChanged</span>(<span class="pl-smi">DataEventBuffer</span> <span class="pl-v">dataEvents</span>) {
-        <span class="pl-v">super</span><span class="pl-k">.</span>onDataChanged(dataEvents);
-        <span class="pl-c">//on WearableListenerService you have to dispatch onDataChanged(x)</span>
-        deLorean<span class="pl-k">.</span>onDataChanged(dataEvents);
-    }
 }</pre></div>
 
 <h2>
 <a id="send-datas" class="anchor" href="#send-datas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Send datas</h2>
 
-<p>To send datas, just create a Sender</p>
+<p>To send datas, just create a Sender
+<em>(can be used from Wear or Smartphone)</em></p>
 
-<div class="highlight highlight-java"><pre><span class="pl-smi">WearProtocol</span> wearProtocol <span class="pl-k">=</span> deLorean<span class="pl-k">.</span>createSender(<span class="pl-smi">WearProtocol</span><span class="pl-k">.</span>class);</pre></div>
+<div class="highlight highlight-java"><pre><span class="pl-smi">WearProtocol</span> wearProtocol <span class="pl-k">=</span> emmet<span class="pl-k">.</span>createSender(<span class="pl-smi">WearProtocol</span><span class="pl-k">.</span>class);</pre></div>
 
 <p>And simply call method on the implemented protocol</p>
 
@@ -151,9 +151,10 @@ don't foget to dispatch onMessageReceived(x) and onDataChanged(x)</p>
 <h2>
 <a id="receive-datas" class="anchor" href="#receive-datas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Receive datas</h2>
 
-<p>To receive datas, simply register a Receiver</p>
+<p>To receive datas, simply register a Receiver
+<em>(can be used from Wear or Smartphone)</em></p>
 
-<div class="highlight highlight-java"><pre>deLorean<span class="pl-k">.</span>registerReceiver(<span class="pl-smi">WearProtocol</span><span class="pl-k">.</span>class,<span class="pl-k">new</span> <span class="pl-smi">WearProtocol</span>() {
+<div class="highlight highlight-java"><pre>emmet<span class="pl-k">.</span>registerReceiver(<span class="pl-smi">WearProtocol</span><span class="pl-k">.</span>class,<span class="pl-k">new</span> <span class="pl-smi">WearProtocol</span>() {
     <span class="pl-k">@Override</span>
     <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayHello</span>() {
         <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>,<span class="pl-s"><span class="pl-pds">"</span>sayHello<span class="pl-pds">"</span></span>);
@@ -167,26 +168,23 @@ don't foget to dispatch onMessageReceived(x) and onDataChanged(x)</p>
 
 <p>Or directly implement it</p>
 
-<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">WearService</span> <span class="pl-k">extends</span> <span class="pl-e">WearableListenerService</span> <span class="pl-k">implements</span> <span class="pl-e">WearProtocol</span> {
-    <span class="pl-c1">...</span>
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> class <span class="pl-k">****</span> implements <span class="pl-smi">WearProtocol</span> {
 
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>() {
+    @<span class="pl-smi">Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> onCreate() {
         <span class="pl-v">super</span><span class="pl-k">.</span>onCreate();
-        deLorean<span class="pl-k">.</span>onCreate(<span class="pl-v">this</span>);
-        deLorean<span class="pl-k">.</span>registerReceiver(<span class="pl-smi">WearProtocol</span><span class="pl-k">.</span>class,<span class="pl-v">this</span>);
+        getEmmet()<span class="pl-k">.</span>registerReceiver(<span class="pl-smi">WearProtocol</span><span class="pl-k">.</span>class,<span class="pl-v">this</span>);
     }
 
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayHello</span>() {
+    @<span class="pl-smi">Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> sayHello() {
         <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>,<span class="pl-s"><span class="pl-pds">"</span>sayHello<span class="pl-pds">"</span></span>);
     }
 
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">sayGoodbye</span>(<span class="pl-k">int</span> <span class="pl-v">delay</span>, <span class="pl-smi">String</span> <span class="pl-v">text</span>, <span class="pl-smi">MyObject</span> <span class="pl-v">myObject</span>) {
+    @<span class="pl-smi">Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> sayGoodbye(<span class="pl-k">int</span> delay, <span class="pl-smi">String</span> text, <span class="pl-smi">MyObject</span> myObject) {
         <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-c1">TAG</span>,<span class="pl-s"><span class="pl-pds">"</span>sayGoodbye <span class="pl-pds">"</span></span><span class="pl-k">+</span>delay<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span><span class="pl-k">+</span>text<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span><span class="pl-k">+</span>myObject<span class="pl-k">.</span>getName());
     }
-    <span class="pl-c1">...</span>
 }</pre></div>
 
 <h2>
@@ -250,14 +248,24 @@ limitations under the License.
 </code></pre>
 
       <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/florent37/DeLorean">Delorean</a> is maintained by <a href="https://github.com/florent37">florent37</a>.</span>
+        <span class="site-footer-owner"><a href="https://github.com/florent37/Emmet">Emmet</a> is maintained by <a href="https://github.com/florent37">florent37</a>.</span>
 
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
 
     </section>
 
-  
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-61134097-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
 
