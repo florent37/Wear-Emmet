@@ -1,7 +1,7 @@
-DeLorean
+Emmet
 =======
 
-[![Build Status](https://travis-ci.org/florent37/DeLorean.svg)](https://travis-ci.org/florent37/DeLorean)
+[![Build Status](https://travis-ci.org/florent37/Emmet.svg)](https://travis-ci.org/florent37/Emmet)
 
 WORK IN PROGRESS
 
@@ -20,7 +20,7 @@ repositories {
 Protocol-based Exchange
 --------
 
-DeLorean il based on data exchanges by protocol.
+Emmet is based on data exchanges by protocol.
 You have to create your protocol, wich will be used by your wear and smartphone module.
 
 ```java
@@ -57,26 +57,26 @@ Setup
 
 **Wear - Activity**
 
-To use DeLorean, you have to create an new instance for each activity
+To use Emmet, you have to create an new instance for each activity
 and attach it to his life-cycle
 
 ```java
 public class MainActivity extends Activity {
 
-    private DeLorean deLorean = new DeLorean();
+    private Emmet emmet = new Emmet();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        deLorean.onCreate(this);
+        emmet.onCreate(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        deLorean.onDestroy();
+        emmet.onDestroy();
     }
 }
 ```
@@ -90,32 +90,32 @@ don't foget to dispatch onMessageReceived(x) and onDataChanged(x)
 ```java
 public class WearService extends WearableListenerService {
 
-    private DeLorean deLorean = new DeLorean();
+    private Emmet emmet = new Emmet();
 
     @Override
     public void onCreate() {
         super.onCreate();
-        deLorean.onCreate(this);
+        emmet.onCreate(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        deLorean.onDestroy();
+        emmet.onDestroy();
     }
 
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         super.onMessageReceived(messageEvent);
         //on WearableListenerService you have to dispatch onMessageReceived(x)
-        deLorean.onMessageReceived(messageEvent);
+        emmet.onMessageReceived(messageEvent);
     }
 
     @Override
     public void onDataChanged(DataEventBuffer dataEvents) {
         super.onDataChanged(dataEvents);
         //on WearableListenerService you have to dispatch onDataChanged(x)
-        deLorean.onDataChanged(dataEvents);
+        emmet.onDataChanged(dataEvents);
     }
 }
 ```
@@ -126,7 +126,7 @@ Send datas
 To send datas, just create a Sender
 
 ```java
-WearProtocol wearProtocol = deLorean.createSender(WearProtocol.class);
+WearProtocol wearProtocol = emmet.createSender(WearProtocol.class);
 ```
 
 And simply call method on the implemented protocol
@@ -144,7 +144,7 @@ Receive datas
 To receive datas, simply register a Receiver
 
 ```java
-deLorean.registerReceiver(WearProtocol.class,new WearProtocol() {
+emmet.registerReceiver(WearProtocol.class,new WearProtocol() {
     @Override
     public void sayHello() {
         Log.d(TAG,"sayHello");
@@ -165,8 +165,8 @@ public class WearService extends WearableListenerService implements WearProtocol
     @Override
     public void onCreate() {
         super.onCreate();
-        deLorean.onCreate(this);
-        deLorean.registerReceiver(WearProtocol.class,this);
+        emmet.onCreate(this);
+        emmet.registerReceiver(WearProtocol.class,this);
     }
 
     @Override
