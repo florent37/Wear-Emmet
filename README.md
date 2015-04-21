@@ -27,8 +27,10 @@ Create a new library module, for exmaple **wearprotocol**
 In the module wearprotocol, import **emmet**
 
 ```java
-import ("com.github.florent37:emmet:1.0.0@aar"){
-    transitive=true
+dependencies {
+    import ("com.github.florent37:emmet:1.0.0@aar"){
+        transitive=true
+    }
 }
 ```
 
@@ -59,6 +61,14 @@ public class MyObject{
     }
 }
 ```
+
+Then import **wearprotocol** into your watch & smartphone modules
+
+```java
+dependencies {
+    compile project(':wearprotocol')
+}
+``
 
 Setup
 --------
