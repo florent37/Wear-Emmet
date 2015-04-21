@@ -1,4 +1,4 @@
-package com.github.florent37.delorean.sample;
+package com.github.florent37.emmet.sample;
 
 /**
  * Created by florentchampigny on 20/04/15.

@@ -1,7 +1,7 @@
-package com.github.florent37.delorean.sample;
+package com.github.florent37.emmet.sample;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 
 
 public class SmartphoneMainActivity extends ActionBarActivity {

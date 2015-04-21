@@ -1,4 +1,4 @@
-package com.github.florent37.delorean.sample;
+package com.github.florent37.emmet.sample;
 
 import java.io.Serializable;
 

@@ -30,9 +30,9 @@ import java.util.List;
 /**
  * Created by florentchampigny on 20/04/15.
  */
-public class DeLorean implements GoogleApiClient.ConnectionCallbacks, MessageApi.MessageListener, DataApi.DataListener, GoogleApiClient.OnConnectionFailedListener {
+public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.MessageListener, DataApi.DataListener, GoogleApiClient.OnConnectionFailedListener {
 
-    private static final String TAG = DeLorean.class.getSimpleName();
+    private static final String TAG = Emmet.class.getSimpleName();
     private final String PATH = "/DeLoran/";
     protected GoogleApiClient mApiClient;
 
