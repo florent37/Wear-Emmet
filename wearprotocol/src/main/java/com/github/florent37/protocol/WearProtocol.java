@@ -1,4 +1,4 @@
-package com.github.florent37.emmet.sample;
+package com.github.florent37.protocol;
 
 /**
  * Created by florentchampigny on 20/04/15.

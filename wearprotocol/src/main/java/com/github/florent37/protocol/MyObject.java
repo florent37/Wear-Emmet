@@ -1,4 +1,4 @@
-package com.github.florent37.emmet.sample;
+package com.github.florent37.protocol;
 
 import java.io.Serializable;
 

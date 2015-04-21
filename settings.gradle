@@ -1,1 +1,1 @@
-include ':emmet', ':mobile', ':wear'
+include ':emmet', ':mobile', ':wear', ':wearprotocol'

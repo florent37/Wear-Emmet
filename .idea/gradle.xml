@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/emmet" />
             <option value="$PROJECT_DIR$/mobile" />
             <option value="$PROJECT_DIR$/wear" />
+            <option value="$PROJECT_DIR$/wearprotocol" />
           </set>
         </option>
       </GradleProjectSettings>

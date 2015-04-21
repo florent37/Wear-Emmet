@@ -19,7 +19,6 @@ import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.Wearable;
 
-import java.io.Serializable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -261,11 +260,9 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
                         map.putString(PARAM_VALUE, (String) argument);
                     } else {
 
-                        if (argument instanceof Serializable) {
-                            map.putString(PARAM_TYPE, argument.getClass().getName());
-                            String encoded = SerialisationUtils.serialize(argument);
-                            map.putString(PARAM_VALUE, encoded);
-                        }
+                        map.putString(PARAM_TYPE, argument.getClass().getName());
+                        String encoded = SerialisationUtils.serialize(argument);
+                        map.putString(PARAM_VALUE, encoded);
 
                     }
 
@@ -332,7 +329,7 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
         Wearable.MessageApi.addListener(mApiClient, this);
         Wearable.DataApi.addListener(mApiClient, this);
 
-        if (waitingItems != null && !waitingItems.isEmpty()){
+        if (waitingItems != null && !waitingItems.isEmpty()) {
             sendDataMapRequests(waitingItems);
             waitingItems.clear();
         }

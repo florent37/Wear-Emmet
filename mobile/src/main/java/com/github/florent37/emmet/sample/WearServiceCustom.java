@@ -1,13 +1,15 @@
 package com.github.florent37.emmet.sample;
 
-import android.util.Log;
+import android.widget.Toast;
 
 import com.github.florent37.Emmet;
+import com.github.florent37.protocol.MyObject;
+import com.github.florent37.protocol.WearProtocol;
 import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
-public class WearService extends WearableListenerService implements WearProtocol {
+public class WearServiceCustom extends WearableListenerService implements WearProtocol {
 
     private final static String TAG = WearService.class.getCanonicalName();
 
@@ -37,12 +39,12 @@ public class WearService extends WearableListenerService implements WearProtocol
 
     @Override
     public void sayHello() {
-        Log.d(TAG, "sayHello");
+        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void sayGoodbye(int delay, String text, MyObject myObject) {
-        Log.d(TAG, "sayGoodbye " + delay + " " + text + " " + myObject.getName());
+        Toast.makeText(this, delay + " " + text + " " + myObject.getName(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
