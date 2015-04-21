@@ -68,7 +68,7 @@ Then import **wearprotocol** into your watch & smartphone modules
 dependencies {
     compile project(':wearprotocol')
 }
-``
+```
 
 Setup
 --------

@@ -35,8 +35,8 @@ dependencies {
 // ./gradlew install bintrayUpload
 
 
-def siteUrl = 'https://github.com/florent37/DeLorean'      // Homepage URL of the library
-def gitUrl = 'https://github.com/florent37/DeLorean.git'   // Git repository URL
+def siteUrl = 'https://github.com/florent37/Emmet'      // Homepage URL of the library
+def gitUrl = 'https://github.com/florent37/Emmet.git'   // Git repository URL
 group = "com.github.florent37"                      // Maven Group ID for the artifact
 
 
@@ -48,7 +48,7 @@ install {
                 packaging 'jar'
 
                 // Add your description here
-                name 'DeLoreanWear'
+                name 'Emmet'
                 description = ''
                 url siteUrl
 
@@ -119,7 +119,7 @@ bintray {
     pkg {
         repo = "maven"
         // it is the name that appears in bintray when logged
-        name = "WearMenu"
+        name = "Emmet"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
