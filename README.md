@@ -63,7 +63,7 @@ public class MyObject{
 }
 ```
 
-![Alt wearprotocol](https://raw.githubusercontent.com/florent37/Emmet/master/mobile/src/main/res/drawable/module_protocol_small.png)
+![Alt wearprotocol](https://raw.githubusercontent.com/florent37/Emmet/master/mobile/src/main/res/drawable/module_protocol.png)
 
 Then import **wearprotocol** into your watch & smartphone modules
 
