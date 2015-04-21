@@ -23,6 +23,16 @@ Protocol-based Exchange
 Emmet is based on data exchanges by protocol.
 You have to create your protocol, wich will be used by your wear and smartphone module.
 
+Create a new library module, for exmaple **wearprotocol**
+In the module wearprotocol, import **emmet**
+
+```java
+import ("com.github.florent37:emmet:1.0.0@aar"){
+    transitive=true
+}
+```
+
+Declare your protocol
 ```java
 public interface WearProtocol{
     public void sayHello();
@@ -31,9 +41,7 @@ public interface WearProtocol{
 }
 ```
 
-Then copy it in your 2 modules.
-
-Don't forget to copy your models into the two modules
+And add your shared models into it
 ```java
 public class MyObject{
     private String name;
@@ -83,7 +91,23 @@ public class MainActivity extends Activity {
 
 **Smartphone - Service**
 
-Create an new instance in the WearableListenerService
+Extend EmmetWearableListenerService
+
+```java
+
+public class WearService extends EmmetWearableListenerService implements WearProtocol {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        Emmet emmet = getEmmet();
+    }
+
+}
+```
+
+Or Create an ew instance in the WearableListenerService
 and attach it to his life-cycle,
 don't foget to dispatch onMessageReceived(x) and onDataChanged(x)
 
@@ -144,7 +168,7 @@ Receive datas
 To receive datas, simply register a Receiver
 
 ```java
-emmet.registerReceiver(WearProtocol.class,new WearProtocol() {
+getEmmet().registerReceiver(WearProtocol.class,new WearProtocol() {
     @Override
     public void sayHello() {
         Log.d(TAG,"sayHello");
@@ -159,14 +183,12 @@ emmet.registerReceiver(WearProtocol.class,new WearProtocol() {
 
 Or directly implement it
 ```java
-public class WearService extends WearableListenerService implements WearProtocol {
-    ...
+public class WearService extends EmmetWearableListenerService implements WearProtocol {
 
     @Override
     public void onCreate() {
         super.onCreate();
-        emmet.onCreate(this);
-        emmet.registerReceiver(WearProtocol.class,this);
+        getEmmet().registerReceiver(WearProtocol.class,this);
     }
 
     @Override
@@ -178,7 +200,6 @@ public class WearService extends WearableListenerService implements WearProtocol
     public void sayGoodbye(int delay, String text, MyObject myObject) {
         Log.d(TAG,"sayGoodbye "+delay+" "+text+" "+myObject.getName());
     }
-    ...
 }
 ```
 
