@@ -8,9 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/delorean" />
-            <option value="$PROJECT_DIR$/deloreanMobile" />
-            <option value="$PROJECT_DIR$/deloreanWear" />
+            <option value="$PROJECT_DIR$/emmet" />
             <option value="$PROJECT_DIR$/mobile" />
             <option value="$PROJECT_DIR$/wear" />
           </set>

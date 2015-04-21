@@ -1,1 +1,1 @@
-include ':wear', ':deloreanMobile', ':deloreanWear', ':mobile', ':delorean'
+include ':emmet', ':mobile', ':wear'

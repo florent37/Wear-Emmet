@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DeLorean.iml" filepath="$PROJECT_DIR$/DeLorean.iml" />
-      <module fileurl="file://$PROJECT_DIR$/delorean/delorean.iml" filepath="$PROJECT_DIR$/delorean/delorean.iml" />
-      <module fileurl="file://$PROJECT_DIR$/deloreanMobile/deloreanMobile.iml" filepath="$PROJECT_DIR$/deloreanMobile/deloreanMobile.iml" />
-      <module fileurl="file://$PROJECT_DIR$/deloreanWear/deloreanWear.iml" filepath="$PROJECT_DIR$/deloreanWear/deloreanWear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/emmet/emmet.iml" filepath="$PROJECT_DIR$/emmet/emmet.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobile/mobile.iml" filepath="$PROJECT_DIR$/mobile/mobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/wear/wear.iml" filepath="$PROJECT_DIR$/wear/wear.iml" />
     </modules>

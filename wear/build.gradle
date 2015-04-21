@@ -23,6 +23,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.android.support:wearable:1.1.0'
-    compile project(':deloreanWear')
+    compile project(':emmet')
     compile 'com.google.code.gson:gson:2.3.1'
 }
