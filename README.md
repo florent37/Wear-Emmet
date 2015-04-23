@@ -3,7 +3,7 @@ Emmet
 
 [![Build Status](https://travis-ci.org/florent37/Emmet.svg)](https://travis-ci.org/florent37/Emmet)
 
-WORK IN PROGRESS
+Emmet is an protocol based data-transfer for Android Wear
 
 Download
 --------
