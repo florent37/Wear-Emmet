@@ -3,11 +3,8 @@ Emmet
 
 [![Build Status](https://travis-ci.org/florent37/Emmet.svg)](https://travis-ci.org/florent37/Emmet)
 
-<<<<<<< HEAD
 ![Alt wearprotocol](https://raw.githubusercontent.com/florent37/Emmet/master/mobile/src/main/res/drawable/emmet_small.png)
 
-=======
->>>>>>> origin/master
 Emmet is an protocol based data-transfer for Android Wear
 
 Download
