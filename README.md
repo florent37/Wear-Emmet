@@ -32,7 +32,7 @@ In the module wearprotocol and import **emmet**
 [![Download](https://api.bintray.com/packages/florent37/maven/Emmet/images/download.svg)](https://bintray.com/florent37/maven/Emmet/_latestVersion)
 ```java
 dependencies {
-    import ("com.github.florent37:emmet:1.0.0@aar"){
+    compile ("com.github.florent37:emmet:1.0.0@aar"){
         transitive=true
     }
 }
