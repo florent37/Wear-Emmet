@@ -9,6 +9,8 @@ import com.github.florent37.Emmet;
 import com.github.florent37.protocol.MyObject;
 import com.github.florent37.protocol.WearProtocol;
 
+import java.util.Arrays;
+
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private Emmet emmet = new Emmet();
@@ -45,7 +47,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 wearProtocol.sayHello();
                 break;
             case R.id.buttonGoodbye:
-                wearProtocol.sayGoodbye(3, "bye", new MyObject("DeLorean"));
+
+                wearProtocol.sayGoodbye(3, "bye", Arrays.asList(new MyObject("DeLorean"),new MyObject("Emmet")));
                 break;
         }
     }

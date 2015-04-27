@@ -9,6 +9,8 @@ import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
+import java.util.List;
+
 public class WearServiceCustom extends WearableListenerService implements WearProtocol {
 
     private final static String TAG = WearService.class.getCanonicalName();
@@ -43,8 +45,8 @@ public class WearServiceCustom extends WearableListenerService implements WearPr
     }
 
     @Override
-    public void sayGoodbye(int delay, String text, MyObject myObject) {
-        Toast.makeText(this, delay + " " + text + " " + myObject.getName(), Toast.LENGTH_SHORT).show();
+    public void sayGoodbye(int delay, String text, List<MyObject> myObject) {
+        Toast.makeText(this, delay + " " + text + " " + myObject.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

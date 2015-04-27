@@ -8,6 +8,8 @@ import com.github.florent37.EmmetWearableListenerService;
 import com.github.florent37.protocol.MyObject;
 import com.github.florent37.protocol.WearProtocol;
 
+import java.util.List;
+
 public class WearService extends EmmetWearableListenerService implements WearProtocol {
 
     private final static String TAG = WearService.class.getCanonicalName();
@@ -50,8 +52,8 @@ public class WearService extends EmmetWearableListenerService implements WearPro
     }
 
     @Override
-    public void sayGoodbye(int delay, String text, MyObject myObject) {
-        show(delay + " " + text + " " + myObject.getName());
+    public void sayGoodbye(int delay, String text, List<MyObject> myObject) {
+        show(delay + " " + text + " " + myObject.toString());
     }
 
 }

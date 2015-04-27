@@ -22,6 +22,7 @@ import com.google.android.gms.wearable.Wearable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -137,7 +138,8 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
                                 params[argumentPos] = map.getString(PARAM_VALUE);
                                 break;
                             default: {
-                                Object deserialized = SerialisationUtils.deserialize(paramClass, map.getString(PARAM_VALUE));
+                                Type t = method.getGenericParameterTypes()[argumentPos];
+                                Object deserialized = SerialisationUtils.deserialize(t, map.getString(PARAM_VALUE));
                                 params[argumentPos] = deserialized;
                             }
                         }
