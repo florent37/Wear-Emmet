@@ -4,6 +4,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.1"
+    enforceUniquePackageName false
 
     defaultConfig {
         minSdkVersion 21
@@ -23,4 +24,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.android.support:wearable:1.1.0'
     compile project(':wearprotocol')
+    compile 'com.github.florent37:baguette:1.0.0@aar'
 }

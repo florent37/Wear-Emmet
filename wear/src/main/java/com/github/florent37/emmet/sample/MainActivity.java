@@ -6,9 +6,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.github.florent37.Emmet;
+import com.github.florent37.baguette.Baguette;
+import com.github.florent37.emmet.Emmet;
 import com.github.florent37.protocol.MyObject;
 import com.github.florent37.protocol.SmartphoneProtocol;
 import com.github.florent37.protocol.WearProtocol;
@@ -64,17 +64,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
         }
     }
 
-    private void show(final String text){
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     @Override
     public void sayReceived(String text) {
-        show(text);
+        Baguette.makeText(this, text, Baguette.LENGTH_SHORT).show();
     }
 }

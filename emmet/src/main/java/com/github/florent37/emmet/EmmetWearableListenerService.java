@@ -1,4 +1,4 @@
-package com.github.florent37;
+package com.github.florent37.emmet;
 
 import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.MessageEvent;

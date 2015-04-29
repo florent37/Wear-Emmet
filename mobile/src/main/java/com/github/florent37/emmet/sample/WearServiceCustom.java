@@ -2,7 +2,7 @@ package com.github.florent37.emmet.sample;
 
 import android.widget.Toast;
 
-import com.github.florent37.Emmet;
+import com.github.florent37.emmet.Emmet;
 import com.github.florent37.protocol.MyObject;
 import com.github.florent37.protocol.SmartphoneProtocol;
 import com.github.florent37.protocol.WearProtocol;

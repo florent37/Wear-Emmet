@@ -1,4 +1,4 @@
-package com.github.florent37;
+package com.github.florent37.emmet;
 
 import android.content.Context;
 import android.os.Bundle;

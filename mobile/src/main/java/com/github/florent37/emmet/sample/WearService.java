@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
-import com.github.florent37.EmmetWearableListenerService;
+import com.github.florent37.emmet.EmmetWearableListenerService;
 import com.github.florent37.protocol.MyObject;
 import com.github.florent37.protocol.SmartphoneProtocol;
 import com.github.florent37.protocol.WearProtocol;
