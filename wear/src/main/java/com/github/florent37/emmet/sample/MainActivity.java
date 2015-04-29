@@ -2,30 +2,41 @@ package com.github.florent37.emmet.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.github.florent37.Emmet;
 import com.github.florent37.protocol.MyObject;
+import com.github.florent37.protocol.SmartphoneProtocol;
 import com.github.florent37.protocol.WearProtocol;
 
 import java.util.Arrays;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener, WearProtocol {
 
     private Emmet emmet = new Emmet();
-    private WearProtocol wearProtocol;
+    private SmartphoneProtocol wearProtocol;
 
     private Button buttonHello;
     private Button buttonGoodbye;
+
+    private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        emmet.onCreate(this);
-        wearProtocol = emmet.createSender(WearProtocol.class);
+        emmet.onCreate(this); //<---------- IMPORTANT
+
+        //create a sender
+        wearProtocol = emmet.createSender(SmartphoneProtocol.class);
+
+        //register this activity as WearProtocolReceiver
+        emmet.registerReceiver(WearProtocol.class,this);
 
         buttonHello = (Button) findViewById(R.id.buttonHello);
         buttonGoodbye = (Button) findViewById(R.id.buttonGoodbye);
@@ -37,7 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        emmet.onDestroy();
+        emmet.onDestroy(); //<---------- IMPORTANT
     }
 
     @Override
@@ -51,5 +62,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 wearProtocol.sayGoodbye(3, "bye", Arrays.asList(new MyObject("DeLorean"),new MyObject("Emmet")));
                 break;
         }
+    }
+
+    private void show(final String text){
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void sayReceived(String text) {
+        show(text);
     }
 }

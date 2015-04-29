@@ -4,6 +4,7 @@ import android.widget.Toast;
 
 import com.github.florent37.Emmet;
 import com.github.florent37.protocol.MyObject;
+import com.github.florent37.protocol.SmartphoneProtocol;
 import com.github.florent37.protocol.WearProtocol;
 import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.MessageEvent;
@@ -11,32 +12,21 @@ import com.google.android.gms.wearable.WearableListenerService;
 
 import java.util.List;
 
-public class WearServiceCustom extends WearableListenerService implements WearProtocol {
+public class WearServiceCustom extends WearableListenerService implements SmartphoneProtocol {
 
     private final static String TAG = WearService.class.getCanonicalName();
 
     private Emmet emmet = new Emmet();
+
+    private WearProtocol sender;
 
     @Override
     public void onCreate() {
         super.onCreate();
         emmet.onCreate(this);
 
-        /*
-        deLorean.registerReceiver(WearProtocol.class,new WearProtocol() {
-            @Override
-            public void sayHello() {
-                Log.d(TAG,"sayHello");
-            }
-
-            @Override
-            public void sayGoodbye(int delay, String text, MyObject myObject) {
-                Log.d(TAG,"sayGoodbye "+delay+" "+text+" "+myObject.getName());
-            }
-        });
-        */
-
-        emmet.registerReceiver(WearProtocol.class, this);
+        emmet.registerReceiver(SmartphoneProtocol.class, this);
+        sender = emmet.createSender(WearProtocol.class);
     }
 
     @Override
@@ -47,6 +37,9 @@ public class WearServiceCustom extends WearableListenerService implements WearPr
     @Override
     public void sayGoodbye(int delay, String text, List<MyObject> myObject) {
         Toast.makeText(this, delay + " " + text + " " + myObject.toString(), Toast.LENGTH_SHORT).show();
+
+        //send a message to wear
+        sender.sayReceived("I received it");
     }
 
     @Override

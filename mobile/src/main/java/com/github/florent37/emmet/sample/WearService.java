@@ -6,35 +6,26 @@ import android.widget.Toast;
 
 import com.github.florent37.EmmetWearableListenerService;
 import com.github.florent37.protocol.MyObject;
+import com.github.florent37.protocol.SmartphoneProtocol;
 import com.github.florent37.protocol.WearProtocol;
 
 import java.util.List;
 
-public class WearService extends EmmetWearableListenerService implements WearProtocol {
+public class WearService extends EmmetWearableListenerService implements SmartphoneProtocol {
 
     private final static String TAG = WearService.class.getCanonicalName();
 
     private Handler handler = new Handler(Looper.getMainLooper());
 
+    private WearProtocol sender;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
-        /*
-        deLorean.registerReceiver(WearProtocol.class,new WearProtocol() {
-            @Override
-            public void sayHello() {
-                Log.d(TAG,"sayH ello");
-            }
+        getEmmet().registerReceiver(SmartphoneProtocol.class, this);
+        sender = getEmmet().createSender(WearProtocol.class);
 
-            @Override
-            public void sayGoodbye(int delay, String text, MyObject myObject) {
-                Log.d(TAG,"sayGoodbye "+delay+" "+text+" "+myObject.getName());
-            }
-        });
-        */
-
-        getEmmet().registerReceiver(WearProtocol.class, this);
     }
 
     private void show(final String text){
@@ -54,6 +45,9 @@ public class WearService extends EmmetWearableListenerService implements WearPro
     @Override
     public void sayGoodbye(int delay, String text, List<MyObject> myObject) {
         show(delay + " " + text + " " + myObject.toString());
+
+        //send a message to wear
+        sender.sayReceived("I received it");
     }
 
 }

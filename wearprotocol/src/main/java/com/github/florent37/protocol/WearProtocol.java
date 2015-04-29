@@ -6,8 +6,6 @@ import java.util.List;
  * Created by florentchampigny on 20/04/15.
  */
 public interface WearProtocol{
-    public void sayHello();
-
-    public void sayGoodbye(int delay, String text, List<MyObject> myObject);
+    public void sayReceived(String text);
 }
 

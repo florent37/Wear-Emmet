@@ -33,7 +33,7 @@ import java.util.List;
 public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.MessageListener, DataApi.DataListener, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = Emmet.class.getSimpleName();
-    private final String PATH = "/DeLoran/";
+    private final String PATH = "/Emmet/";
     protected GoogleApiClient mApiClient;
 
     private static final String METHOD_NAME = "name";
@@ -280,6 +280,7 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
                 if (mApiClient.isConnected()) {
                     sendDataMapRequest(putDataMapRequest);
                 } else {
+                    mApiClient.connect();
                     waitingItems.add(putDataMapRequest);
                 }
             }
@@ -328,6 +329,8 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
 
     @Override
     public void onConnected(Bundle bundle) {
+        Log.d(TAG, "onConnected");
+
         Wearable.MessageApi.addListener(mApiClient, this);
         Wearable.DataApi.addListener(mApiClient, this);
 
@@ -339,12 +342,12 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
 
     @Override
     public void onConnectionSuspended(int i) {
-
+        Log.d(TAG, "onConnectionSuspended");
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-
+        Log.d(TAG, "onConnectionFailed");
     }
 
     //endregion
