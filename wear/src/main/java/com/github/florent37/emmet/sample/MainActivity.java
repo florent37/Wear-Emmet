@@ -18,7 +18,7 @@ import java.util.Arrays;
 public class MainActivity extends Activity implements View.OnClickListener, WearProtocol {
 
     private Emmet emmet = new Emmet();
-    private SmartphoneProtocol wearProtocol;
+    private SmartphoneProtocol smartphoneProtocol;
 
     private Button buttonHello;
     private Button buttonGoodbye;
@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
         emmet.onCreate(this); //<---------- IMPORTANT
 
         //create a sender
-        wearProtocol = emmet.createSender(SmartphoneProtocol.class);
+        smartphoneProtocol = emmet.createSender(SmartphoneProtocol.class);
 
         //register this activity as WearProtocolReceiver
         emmet.registerReceiver(WearProtocol.class,this);
@@ -55,11 +55,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.buttonHello:
-                wearProtocol.sayHello();
+                smartphoneProtocol.sayHello();
                 break;
             case R.id.buttonGoodbye:
 
-                wearProtocol.sayGoodbye(3, "bye", Arrays.asList(new MyObject("DeLorean"),new MyObject("Emmet")));
+                smartphoneProtocol.sayGoodbye(3, "bye", Arrays.asList(new MyObject("DeLorean"),new MyObject("Emmet")));
                 break;
         }
     }
