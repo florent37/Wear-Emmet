@@ -191,7 +191,7 @@ public class **** implements WearProtocol {
 Sample
 --------
 
-Take a look to a fully sample app using Emmet and DaVinci : [https://github.com/florent37/Potier](https://github.com/florent37/Potier)
+Take a look to a fully sample app using Emmet and [DaVinci](https://github.com/florent37/DaVinci) : [https://github.com/florent37/Potier](https://github.com/florent37/Potier)
 
 TODO
 --------
