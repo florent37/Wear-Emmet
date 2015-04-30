@@ -143,6 +143,7 @@ Send datas
 --------
 
 To send datas, just create a Sender
+
 **I will only show how to send datas to From Wear -> Smartphone, it's the same process for Smartphone -> Wear**
 
 ```java
