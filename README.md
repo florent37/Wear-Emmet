@@ -46,10 +46,18 @@ dependencies {
 }
 ```
 
-Declare your protocol into an interface
+Declare your protocols into interfaces
 ```java
+//messages to send at SmartWatch
 public interface WearProtocol{
-    public void sayHello();
+    public void sayReceived(String text);
+}
+```
+
+```java
+//messages to send at SmartPhone
+public interface SmartphoneProtocol{
+     public void sayHello();
 
     public void sayGoodbye(int delay, String text, MyObject myObject);
 }
@@ -135,19 +143,19 @@ Send datas
 --------
 
 To send datas, just create a Sender
-*(can be used from Wear or Smartphone)*
+**I will only show how to send datas to From Wear -> Smartphone, it's the same process for Smartphone -> Wear**
 
 ```java
-WearProtocol wearProtocol = emmet.createSender(WearProtocol.class);
+SmartphoneProtocol smartphoneProtocol = emmet.createSender(SmartphoneProtocol.class);
 ```
 
-And simply call method on the implemented protocol
+And simply call method on the implemented protocol, the message will be send to Smartphone
 ```java
-wearProtocol.sayHello();
+smartphoneProtocol.sayHello();
 ```
 Can be used with parameters
 ```java
-wearProtocol.sayGoodbye(3,"bye", new MyObject("DeLorean"));
+smartphoneProtocol.sayGoodbye(3,"bye", new MyObject("DeLorean"));
 ```
 
 Receive datas
@@ -159,7 +167,7 @@ To receive datas, simply register a Receiver
 **Simple note, Smartphone Service created only with the reception of a message coming from the SmartWatch**
 
 ```java
-emmet.registerReceiver(WearProtocol.class,new WearProtocol() {
+emmet.registerReceiver(SmartphoneProtocol.class,new SmartphoneProtocol() {
     @Override
     public void sayHello() {
         Log.d(TAG,"sayHello");
@@ -174,12 +182,12 @@ emmet.registerReceiver(WearProtocol.class,new WearProtocol() {
 
 Or directly implement it
 ```java
-public class **** implements WearProtocol {
+public class **** implements SmartphoneProtocol {
 
     @Override
     public void onCreate() {
         super.onCreate();
-        getEmmet().registerReceiver(WearProtocol.class,this);
+        getEmmet().registerReceiver(SmartphoneProtocol.class,this);
     }
 
     @Override
