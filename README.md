@@ -150,6 +150,8 @@ Receive datas
 To receive datas, simply register a Receiver
 *(can be used from Wear or Smartphone)*
 
+**Simple note, Smartphone Service created only with the reception of a message coming from the SmartWatch**
+
 ```java
 emmet.registerReceiver(WearProtocol.class,new WearProtocol() {
     @Override
@@ -185,6 +187,11 @@ public class **** implements WearProtocol {
     }
 }
 ```
+
+Sample
+--------
+
+Take a look to a fully sample app using Emmet and DaVinci : [https://github.com/florent37/Potier](https://github.com/florent37/Potier)
 
 TODO
 --------
