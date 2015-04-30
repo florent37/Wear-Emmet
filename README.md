@@ -7,6 +7,12 @@ Emmet
 
 Emmet is an protocol based data-transfer for Android Wear
 
+Sample
+--------
+
+Take a look to a fully sample app using Emmet and [DaVinci](https://github.com/florent37/DaVinci) : [https://github.com/florent37/Potier](https://github.com/florent37/Potier)
+
+
 Download
 --------
 
@@ -187,11 +193,6 @@ public class **** implements WearProtocol {
     }
 }
 ```
-
-Sample
---------
-
-Take a look to a fully sample app using Emmet and [DaVinci](https://github.com/florent37/DaVinci) : [https://github.com/florent37/Potier](https://github.com/florent37/Potier)
 
 TODO
 --------
