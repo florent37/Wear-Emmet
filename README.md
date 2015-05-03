@@ -38,6 +38,14 @@ You have to create your protocol, wich will be used by your wear and smartphone 
 
 Create a new library module, for example **wearprotocol**
 
+Import **wearprotocol** into your **wear & smartphone modules**
+
+```java
+dependencies {
+    compile project(':wearprotocol')
+}
+```
+
 In the module wearprotocol import **emmet**
 
 [![Download](https://api.bintray.com/packages/florent37/maven/Emmet/images/download.svg)](https://bintray.com/florent37/maven/Emmet/_latestVersion)
@@ -87,13 +95,6 @@ public class MyObject{
 
 ![Alt wearprotocol](https://raw.githubusercontent.com/florent37/Emmet/master/mobile/src/main/res/drawable/module_protocol_small.png)
 
-Then import **wearprotocol** into your watch & smartphone modules
-
-```java
-dependencies {
-    compile project(':wearprotocol')
-}
-```
 
 Setup
 --------
