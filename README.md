@@ -38,7 +38,7 @@ You have to create your protocol, wich will be used by your wear and smartphone 
 
 Create a new library module, for example **wearprotocol**
 
-In the module wearprotocol and import **emmet**
+In the module wearprotocol import **emmet**
 
 [![Download](https://api.bintray.com/packages/florent37/maven/Emmet/images/download.svg)](https://bintray.com/florent37/maven/Emmet/_latestVersion)
 ```java
