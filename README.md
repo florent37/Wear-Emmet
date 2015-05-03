@@ -1,6 +1,8 @@
 Emmet
 =======
 
+[![Join the chat at https://gitter.im/florent37/Emmet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/florent37/Emmet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/florent37/Emmet.svg)](https://travis-ci.org/florent37/Emmet)
 
 ![Alt wearprotocol](https://raw.githubusercontent.com/florent37/Emmet/master/mobile/src/main/res/drawable/emmet_small.png)
