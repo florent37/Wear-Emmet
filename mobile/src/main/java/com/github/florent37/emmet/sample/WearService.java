@@ -46,8 +46,9 @@ public class WearService extends EmmetWearableListenerService implements Smartph
     public void sayGoodbye(int delay, String text, List<MyObject> myObject) {
         show(delay + " " + text + " " + myObject.toString());
 
+
         //send a message to wear
-        sender.sayReceived("I received it");
+        sender.sayReceived(myObject);
     }
 
 }

@@ -10,10 +10,12 @@ import android.widget.Button;
 import com.github.florent37.baguette.Baguette;
 import com.github.florent37.emmet.Emmet;
 import com.github.florent37.protocol.MyObject;
+import com.github.florent37.protocol.MySecondObject;
 import com.github.florent37.protocol.SmartphoneProtocol;
 import com.github.florent37.protocol.WearProtocol;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener, WearProtocol {
 
@@ -59,13 +61,24 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
                 break;
             case R.id.buttonGoodbye:
 
-                smartphoneProtocol.sayGoodbye(3, "bye", Arrays.asList(new MyObject("DeLorean"),new MyObject("Emmet")));
+                MyObject myObject = new MyObject("Emmet");
+                myObject.setMySecondObject(new MySecondObject("0",0,0));
+                myObject.setList(Arrays.asList(
+                        new MySecondObject("1",1,1.0f),
+                        new MySecondObject("2",2,3.0f),
+                        new MySecondObject("3",3,3.0f)
+                ));
+
+                smartphoneProtocol.sayGoodbye(3, "bye", Arrays.asList(
+                        new MyObject("DeLorean"),
+                        myObject
+                ));
                 break;
         }
     }
 
     @Override
-    public void sayReceived(String text) {
-        Baguette.makeText(this, text, Baguette.LENGTH_SHORT).show();
+    public void sayReceived(List<MyObject> list) {
+        Baguette.makeText(this, list.toString(), Baguette.LENGTH_SHORT).show();
     }
 }

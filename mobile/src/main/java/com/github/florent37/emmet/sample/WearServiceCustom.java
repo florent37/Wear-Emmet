@@ -39,7 +39,7 @@ public class WearServiceCustom extends WearableListenerService implements Smartp
         Toast.makeText(this, delay + " " + text + " " + myObject.toString(), Toast.LENGTH_SHORT).show();
 
         //send a message to wear
-        sender.sayReceived("I received it");
+        sender.sayReceived(myObject);
     }
 
     @Override

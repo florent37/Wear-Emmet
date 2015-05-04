@@ -139,7 +139,7 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
                                 break;
                             default: {
                                 Type t = method.getGenericParameterTypes()[argumentPos];
-                                Object deserialized = SerialisationUtils.deserialize(t, map.getString(PARAM_VALUE));
+                                Object deserialized = SerialisationUtilsGSON.deserialize(t, map.getString(PARAM_VALUE));
                                 params[argumentPos] = deserialized;
                             }
                         }
@@ -263,7 +263,7 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
                     } else {
 
                         map.putString(PARAM_TYPE, argument.getClass().getName());
-                        String encoded = SerialisationUtils.serialize(argument);
+                        String encoded = SerialisationUtilsGSON.serialize(argument);
                         map.putString(PARAM_VALUE, encoded);
 
                     }
