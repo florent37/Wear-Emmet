@@ -1,7 +1,7 @@
 Emmet
 =======
 
-[![Build Status](https://travis-ci.org/florent37/Emmet.svg)](https://travis-ci.org/florent37/Emmet)
+[![Build Status](https://travis-ci.org/florent37/Emmet-Wear.svg)](https://travis-ci.org/florent37/Emmet-Wear)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Emmet-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1741)
 [![Join the chat at https://gitter.im/florent37/Emmet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/florent37/Emmet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
