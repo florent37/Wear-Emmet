@@ -1,7 +1,12 @@
 Emmet
 =======
 
-[![Build Status](https://travis-ci.org/florent37/Emmet.svg)](https://travis-ci.org/florent37/Emmet)
+[![Join the chat at https://gitter.im/florent37/Wear-Emmet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/florent37/Wear-Emmet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+[![Build Status](https://travis-ci.org/florent37/Wear-Emmet.svg)](https://travis-ci.org/florent37/Wear-Emmet)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Emmet-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1741)
+[![Join the chat at https://gitter.im/florent37/Emmet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/florent37/Emmet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 ![Alt wearprotocol](https://raw.githubusercontent.com/florent37/Emmet/master/mobile/src/main/res/drawable/emmet_small.png)
 
@@ -13,20 +18,6 @@ Sample
 Take a look to a fully sample app using Emmet and [DaVinci](https://github.com/florent37/DaVinci) : [https://github.com/florent37/Potier](https://github.com/florent37/Potier)
 
 
-Download
---------
-
-In your root build.gradle add
-```groovy
-allprojects {
-    repositories {
-        maven {
-            url  "http://dl.bintray.com/florent37/maven"
-        }
-    }
-}
-```
-
 Protocol-based Exchange
 --------
 
@@ -35,12 +26,20 @@ You have to create your protocol, wich will be used by your wear and smartphone 
 
 Create a new library module, for example **wearprotocol**
 
-In the module wearprotocol and import **emmet**
+Import **wearprotocol** into your **wear & smartphone modules**
+
+```java
+dependencies {
+    compile project(':wearprotocol')
+}
+```
+
+In the module wearprotocol import **emmet**
 
 [![Download](https://api.bintray.com/packages/florent37/maven/Emmet/images/download.svg)](https://bintray.com/florent37/maven/Emmet/_latestVersion)
 ```java
 dependencies {
-    compile ("com.github.florent37:emmet:1.0.0@aar"){
+    compile ("com.github.florent37:emmet:1.0.1@aar"){
         transitive=true
     }
 }
@@ -84,13 +83,6 @@ public class MyObject{
 
 ![Alt wearprotocol](https://raw.githubusercontent.com/florent37/Emmet/master/mobile/src/main/res/drawable/module_protocol_small.png)
 
-Then import **wearprotocol** into your watch & smartphone modules
-
-```java
-dependencies {
-    compile project(':wearprotocol')
-}
-```
 
 Setup
 --------
