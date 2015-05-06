@@ -3,6 +3,7 @@ package com.github.florent37.emmet;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -50,7 +51,16 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
 
     private ArrayList<Object> interfaces = new ArrayList<>();
 
-    private ArrayList<PutDataMapRequest> waitingItems = new ArrayList<>();
+    private ArrayList<PutDataMapRequest> mWaitingDataMapItems = new ArrayList<>();
+
+    private ArrayList<Pair<String, String>> mWaitingMessageItems = new ArrayList<>();
+
+    private ConnectionListener mConnectionListener;
+
+    public void onCreate(Context context, ConnectionListener connectionListener) {
+        onCreate(context);
+        mConnectionListener = connectionListener;
+    }
 
     public void onCreate(Context context) {
         mApiClient = new GoogleApiClient.Builder(context)
@@ -59,6 +69,10 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
                 .addOnConnectionFailedListener(this)
                 .build();
         mApiClient.connect();
+    }
+
+    public void setConnectionListener(ConnectionListener connectionListener) {
+        mConnectionListener = connectionListener;
     }
 
     public void onDestroy() {
@@ -280,8 +294,8 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
                 if (mApiClient.isConnected()) {
                     sendDataMapRequest(putDataMapRequest);
                 } else {
+                    mWaitingDataMapItems.add(putDataMapRequest);
                     mApiClient.connect();
-                    waitingItems.add(putDataMapRequest);
                 }
             }
         }
@@ -308,20 +322,32 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
             sendDataMapRequest(request);
     }
 
-    protected void sendMessage(final String path, final String message) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(mApiClient).await();
-                for (Node node : nodes.getNodes()) {
-                    MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(
-                            mApiClient, node.getId(), path, message.getBytes()).await();
-
-                }
-            }
-        }).start();
+    private void sendMessages(List<Pair<String, String>> requests) {
+        for (Pair<String, String> pair : requests)
+            sendMessage(pair.first, pair.second);
     }
 
+    protected void sendMessage(final String path, final String message) {
+        if (mApiClient != null) {
+            if (mApiClient.isConnected()) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        final NodeApi.GetConnectedNodesResult nodes =
+                                Wearable.NodeApi.getConnectedNodes(mApiClient).await();
+                        for (Node node : nodes.getNodes()) {
+                            MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(
+                                    mApiClient, node.getId(), path, message.getBytes()).await();
+
+                        }
+                    }
+                }).start();
+            } else {
+                mWaitingMessageItems.add(new Pair<>(path, message));
+                mApiClient.connect();
+            }
+        }
+    }
 
     //endregion
 
@@ -334,21 +360,60 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
         Wearable.MessageApi.addListener(mApiClient, this);
         Wearable.DataApi.addListener(mApiClient, this);
 
-        if (waitingItems != null && !waitingItems.isEmpty()) {
-            sendDataMapRequests(waitingItems);
-            waitingItems.clear();
+        if (mWaitingDataMapItems != null && !mWaitingDataMapItems.isEmpty()) {
+            sendDataMapRequests(mWaitingDataMapItems);
+            mWaitingDataMapItems.clear();
+        }
+
+        if (mWaitingMessageItems != null && !mWaitingMessageItems.isEmpty()) {
+            sendMessages(mWaitingMessageItems);
+            mWaitingMessageItems.clear();
+        }
+
+        if (mConnectionListener != null) {
+            mConnectionListener.onConnected(bundle);
         }
     }
 
     @Override
     public void onConnectionSuspended(int i) {
         Log.d(TAG, "onConnectionSuspended");
+        if (mConnectionListener != null) {
+            mConnectionListener.onConnectionSuspended(i);
+        }
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         Log.d(TAG, "onConnectionFailed");
+        if (mConnectionListener != null) {
+            mConnectionListener.onConnectionFailed(connectionResult);
+        }
     }
 
     //endregion
+
+    public interface ConnectionListener {
+        void onConnected(Bundle connectionHint);
+        void onConnectionSuspended(int cause);
+        void onConnectionFailed(ConnectionResult connectionResult);
+    }
+
+    public static abstract class ConnectionListenerAdapter implements ConnectionListener {
+        @Override
+        public void onConnected(Bundle connectionHint) {
+            // do nothing
+        }
+
+        @Override
+        public void onConnectionSuspended(int cause) {
+            // do nothing
+        }
+
+        @Override
+        public void onConnectionFailed(ConnectionResult connectionResult) {
+            // do nothing
+        }
+    }
+
 }
