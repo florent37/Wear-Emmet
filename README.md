@@ -215,6 +215,14 @@ emmet.setConnectionListener(new Emmet.ConnectionListener() {
         });
 ```
 
+Log
+--------
+
+You can enable/disable Emmet's logs
+```java
+emmet.setLogEnabled(true);
+```
+
 TODO
 --------
 
