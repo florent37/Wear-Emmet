@@ -70,8 +70,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
                 ));
 
                 smartphoneProtocol.sayGoodbye(3, "bye", Arrays.asList(
-                        new MyObject("DeLorean"),
-                        myObject
+                        myObject,
+                        new MyObject("DeLorean")
                 ));
                 break;
         }

@@ -40,4 +40,13 @@ public class MyObject implements Serializable{
     public void setList(List<MySecondObject> list) {
         this.list = list;
     }
+
+    @Override
+    public String toString() {
+        return "MyObject{" +
+                "name='" + name + '\'' +
+                ", mySecondObject=" + mySecondObject +
+                ", list=" + list +
+                '}';
+    }
 }

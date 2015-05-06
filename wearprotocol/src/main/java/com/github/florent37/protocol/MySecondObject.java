@@ -27,4 +27,13 @@ public class MySecondObject implements Serializable {
     public float getPercent() {
         return percent;
     }
+
+    @Override
+    public String toString() {
+        return "MySecondObject{" +
+                "name='" + name + '\'' +
+                ", value=" + value +
+                ", percent=" + percent +
+                '}';
+    }
 }

@@ -37,7 +37,7 @@ In the module wearprotocol import **emmet**
 [![Download](https://api.bintray.com/packages/florent37/maven/Emmet/images/download.svg)](https://bintray.com/florent37/maven/Emmet/_latestVersion)
 ```java
 dependencies {
-    compile ("com.github.florent37:emmet:1.0.1@aar"){
+    compile ("com.github.florent37:emmet:1.0.2@aar"){
         transitive=true
     }
 }
@@ -191,6 +191,28 @@ public class **** implements SmartphoneProtocol {
         Log.d(TAG,"sayGoodbye "+delay+" "+text+" "+myObject.getName());
     }
 }
+```
+
+ConnectionListener
+--------
+
+```java
+emmet.setConnectionListener(new Emmet.ConnectionListener() {
+            @Override
+            public void onConnected(Bundle connectionHint) {
+
+            }
+
+            @Override
+            public void onConnectionSuspended(int cause) {
+
+            }
+
+            @Override
+            public void onConnectionFailed(ConnectionResult connectionResult) {
+
+            }
+        });
 ```
 
 TODO

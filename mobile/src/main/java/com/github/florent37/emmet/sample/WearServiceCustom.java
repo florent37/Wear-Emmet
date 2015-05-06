@@ -1,11 +1,13 @@
 package com.github.florent37.emmet.sample;
 
+import android.os.Bundle;
 import android.widget.Toast;
 
 import com.github.florent37.emmet.Emmet;
 import com.github.florent37.protocol.MyObject;
 import com.github.florent37.protocol.SmartphoneProtocol;
 import com.github.florent37.protocol.WearProtocol;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
