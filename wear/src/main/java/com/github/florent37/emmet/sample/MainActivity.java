@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
         Emmet.onCreate(this); //<---------- IMPORTANT
 
         //create a sender
-        smartphoneProtocol = Emmet.getDefault().createSender(SmartphoneProtocol.class);
+        smartphoneProtocol = Emmet.createSender(SmartphoneProtocol.class);
 
         //register this activity as WearProtocolReceiver
         Emmet.registerReceiver(WearProtocol.class, this);
