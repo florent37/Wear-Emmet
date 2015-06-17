@@ -24,16 +24,13 @@ public interface WearProtocol{
 ```
 
 2. Use Emmet to send data to the Wear
-
 ```java
 Emmet emmet = new Emmet();
 WearProtocol wearProtocol = emmet.createSender(WearProtocol.class);
 wearProtocol.sendMyObject(myObject);
 ```
 
-
 3. Receive the data in Wear
-
 ```
 emmet.registerReceiver(WearProtocol.class, new WearProtocol() {
     @Override
