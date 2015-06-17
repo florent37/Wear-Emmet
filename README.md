@@ -10,10 +10,6 @@ Emmet
 
 Emmet is an protocol based data-transfer for Android Wear
 
-#Sample
-
-Take a look to a fully sample app using Emmet and [DaVinci](https://github.com/florent37/DaVinci) : [https://github.com/florent37/Potier](https://github.com/florent37/Potier)
-
 #Usage
 
 1/ Declare your protocols into interfaces
@@ -40,6 +36,10 @@ Emmet.registerReceiver(WearProtocol.class, new WearProtocol() {
 ```
 
 Please take a look to the [wiki](https://github.com/florent37/Wear-Emmet/wikir)
+
+#Sample
+
+Take a look to a fully sample app using Emmet and [DaVinci](https://github.com/florent37/DaVinci) : [https://github.com/florent37/Potier](https://github.com/florent37/Potier)
 
 #Import
 
