@@ -68,13 +68,6 @@ dependencies {
 
 ![Alt wearprotocol](https://raw.githubusercontent.com/florent37/Emmet/master/mobile/src/main/res/drawable/module_protocol_small.png)
 
-Log
---------
-
-You can enable/disable Emmet's logs
-```java
-emmet.setLogEnabled(true);
-```
 
 Community
 --------
