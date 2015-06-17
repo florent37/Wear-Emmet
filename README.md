@@ -16,21 +16,21 @@ Take a look to a fully sample app using Emmet and [DaVinci](https://github.com/f
 
 #Usage
 
-1. Declare your protocols into interfaces
+1/ Declare your protocols into interfaces
 ```java
 public interface WearProtocol{
     public void sendMyObject(MyObject object);
 }
 ```
 
-2. Use Emmet to send data to the Wear
+2/ Use Emmet to send data to the Wear
 ```java
 Emmet emmet = new Emmet();
 WearProtocol wearProtocol = emmet.createSender(WearProtocol.class);
 wearProtocol.sendMyObject(myObject);
 ```
 
-3. Receive the data in Wear
+3/ Receive the data in Wear
 ```
 emmet.registerReceiver(WearProtocol.class, new WearProtocol() {
     @Override
