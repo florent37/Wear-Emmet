@@ -10,17 +10,40 @@ Emmet
 
 Emmet is an protocol based data-transfer for Android Wear
 
-Sample
---------
+#Sample
 
 Take a look to a fully sample app using Emmet and [DaVinci](https://github.com/florent37/DaVinci) : [https://github.com/florent37/Potier](https://github.com/florent37/Potier)
 
+#Usage
 
-Protocol-based Exchange
---------
+1. Declare your protocols into interfaces
+```java
+public interface WearProtocol{
+    public void sendMyObject(MyObject object);
+}
+```
 
-Emmet is based on data exchanges by protocol.
-You have to create your protocol, wich will be used by your wear and smartphone module.
+2. Use Emmet to send data to the Wear
+
+```java
+Emmet emmet = new Emmet();
+WearProtocol wearProtocol = emmet.createSender(WearProtocol.class);
+wearProtocol.sendMyObject(myObject);
+```
+
+
+3. Receive the data in Wear
+
+```
+emmet.registerReceiver(WearProtocol.class, new WearProtocol() {
+    @Override
+    public void sendMyObject(MyObject object) {
+        /* Do whatever you want with the object */
+    }
+});
+```
+
+#Import
 
 Create a new library module, for example **wearprotocol**
 
@@ -43,177 +66,7 @@ dependencies {
 }
 ```
 
-Declare your protocols into interfaces
-```java
-//messages to send at SmartWatch
-public interface WearProtocol{
-    public void sayReceived(String text);
-}
-```
-
-```java
-//messages to send at SmartPhone
-public interface SmartphoneProtocol{
-     public void sayHello();
-
-    public void sayGoodbye(int delay, String text, MyObject myObject);
-}
-```
-
-And add your shared models into this module
-```java
-public class MyObject{
-    private String name;
-
-    public MyObject(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-}
-```
-
 ![Alt wearprotocol](https://raw.githubusercontent.com/florent37/Emmet/master/mobile/src/main/res/drawable/module_protocol_small.png)
-
-
-Setup
---------
-
-**Wear - Activity**
-
-To use Emmet, you have to create an new instance for each activity
-and attach it to his life-cycle
-
-```java
-public class MainActivity extends Activity {
-
-    private Emmet emmet = new Emmet();
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        emmet.onCreate(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        emmet.onDestroy();
-    }
-}
-```
-
-**Smartphone - Service**
-
-Extend EmmetWearableListenerService
-
-```java
-
-public class WearService extends EmmetWearableListenerService implements WearProtocol {
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        Emmet emmet = getEmmet();
-    }
-
-}
-```
-
-Send datas
---------
-
-To send datas, just create a Sender
-
-**I will only show how to send datas to From Wear -> Smartphone, it's the same process for Smartphone -> Wear**
-
-```java
-SmartphoneProtocol smartphoneProtocol = emmet.createSender(SmartphoneProtocol.class);
-```
-
-And simply call method on the implemented protocol, the message will be send to Smartphone
-```java
-smartphoneProtocol.sayHello();
-```
-Can be used with parameters
-```java
-smartphoneProtocol.sayGoodbye(3,"bye", new MyObject("DeLorean"));
-```
-
-Receive datas
---------
-
-To receive datas, simply register a Receiver
-*(can be used from Wear or Smartphone)*
-
-**Simple note, Smartphone Service created only with the reception of a message coming from the SmartWatch**
-
-```java
-emmet.registerReceiver(SmartphoneProtocol.class,new SmartphoneProtocol() {
-    @Override
-    public void sayHello() {
-        Log.d(TAG,"sayHello");
-    }
-
-    @Override
-    public void sayGoodbye(int delay, String text, MyObject myObject) {
-        Log.d(TAG,"sayGoodbye "+delay+" "+text+" "+myObject.getName());
-    }
-});
-```
-
-Or directly implement it
-```java
-public class **** implements SmartphoneProtocol {
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        getEmmet().registerReceiver(SmartphoneProtocol.class,this);
-    }
-
-    @Override
-    public void sayHello() {
-        Log.d(TAG,"sayHello");
-    }
-
-    @Override
-    public void sayGoodbye(int delay, String text, MyObject myObject) {
-        Log.d(TAG,"sayGoodbye "+delay+" "+text+" "+myObject.getName());
-    }
-}
-```
-
-ConnectionListener
---------
-
-```java
-emmet.setConnectionListener(new Emmet.ConnectionListener() {
-            @Override
-            public void onConnected(Bundle connectionHint) {
-
-            }
-
-            @Override
-            public void onConnectionSuspended(int cause) {
-
-            }
-
-            @Override
-            public void onConnectionFailed(ConnectionResult connectionResult) {
-
-            }
-        });
-```
 
 Log
 --------
@@ -222,9 +75,6 @@ You can enable/disable Emmet's logs
 ```java
 emmet.setLogEnabled(true);
 ```
-
-TODO
---------
 
 Community
 --------
