@@ -18,17 +18,16 @@ public class WearServiceCustom extends WearableListenerService implements Smartp
 
     private final static String TAG = WearService.class.getCanonicalName();
 
-    private Emmet emmet = new Emmet();
-
     private WearProtocol sender;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        emmet.onCreate(this);
 
-        emmet.registerReceiver(SmartphoneProtocol.class, this);
-        sender = emmet.createSender(WearProtocol.class);
+        Emmet.onCreate(this);
+
+        Emmet.registerReceiver(SmartphoneProtocol.class, this);
+        sender = Emmet.createSender(WearProtocol.class);
     }
 
     @Override
@@ -47,21 +46,21 @@ public class WearServiceCustom extends WearableListenerService implements Smartp
     @Override
     public void onDestroy() {
         super.onDestroy();
-        emmet.onDestroy();
+        Emmet.onDestroy();
     }
 
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         super.onMessageReceived(messageEvent);
         //on WearableListenerService you have to dispatch onMessageReceived(x)
-        emmet.onMessageReceived(messageEvent);
+        Emmet.onMessageReceived(messageEvent);
     }
 
     @Override
     public void onDataChanged(DataEventBuffer dataEvents) {
         super.onDataChanged(dataEvents);
         //on WearableListenerService you have to dispatch onDataChanged(x)
-        emmet.onDataChanged(dataEvents);
+        Emmet.onDataChanged(dataEvents);
     }
 
 

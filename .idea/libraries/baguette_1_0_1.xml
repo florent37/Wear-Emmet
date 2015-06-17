@@ -1,11 +1,8 @@
 <component name="libraryTable">
   <library name="baguette-1.0.1">
-    <ANNOTATIONS>
-      <root url="jar://$PROJECT_DIR$/wear/build/intermediates/exploded-aar/com.github.florent37/baguette/1.0.1/annotations.zip!/" />
-    </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/wear/build/intermediates/exploded-aar/com.github.florent37/baguette/1.0.1/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/wear/build/intermediates/exploded-aar/com.github.florent37/baguette/1.0.1/res" />
+      <root url="jar://$PROJECT_DIR$/wear/build/intermediates/exploded-aar/com.github.florent37/baguette/1.0.1/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

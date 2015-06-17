@@ -19,7 +19,6 @@ import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener, WearProtocol {
 
-    private Emmet emmet = new Emmet();
     private SmartphoneProtocol smartphoneProtocol;
 
     private Button buttonHello;
@@ -32,13 +31,13 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        emmet.onCreate(this); //<---------- IMPORTANT
+        Emmet.onCreate(this); //<---------- IMPORTANT
 
         //create a sender
-        smartphoneProtocol = emmet.createSender(SmartphoneProtocol.class);
+        smartphoneProtocol = Emmet.getDefault().createSender(SmartphoneProtocol.class);
 
         //register this activity as WearProtocolReceiver
-        emmet.registerReceiver(WearProtocol.class,this);
+        Emmet.registerReceiver(WearProtocol.class, this);
 
         buttonHello = (Button) findViewById(R.id.buttonHello);
         buttonGoodbye = (Button) findViewById(R.id.buttonGoodbye);
@@ -50,7 +49,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        emmet.onDestroy(); //<---------- IMPORTANT
+        Emmet.onDestroy(); //<---------- IMPORTANT
     }
 
     @Override

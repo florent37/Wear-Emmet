@@ -31,11 +31,11 @@ import java.util.List;
 /**
  * Created by florentchampigny on 20/04/15.
  */
-public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.MessageListener,
-        DataApi.DataListener, GoogleApiClient.OnConnectionFailedListener,
+public class Emmet implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
         ResultCallback<NodeApi.GetConnectedNodesResult> {
 
-    private static final String TAG = Emmet.class.getSimpleName();
+    private static final String TAG = "Emmet";
     private final String PATH = "/Emmet/";
     protected GoogleApiClient mApiClient;
 
@@ -64,23 +64,59 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
     private NodeListener mNodeListener;
     private boolean mNodeListenerRegistered;
 
-    public void onCreate(Context context, ConnectionListener connectionListener) {
-        onCreate(context);
-        mConnectionListener = connectionListener;
+    private static Emmet INSTANCE;
+
+    private Emmet() {
     }
 
-    public void onCreate(Context context) {
+    public static Emmet getDefault() {
+        if (INSTANCE == null)
+            INSTANCE = new Emmet();
+        return INSTANCE;
+    }
+
+    private static Emmet onCreate(Context context, ConnectionListener connectionListener) {
+        Emmet emmet = getDefault();
+        emmet.create(context, connectionListener);
+        return emmet;
+    }
+
+    public static Emmet onCreate(Context context) {
+        Emmet emmet = getDefault();
+        emmet.create(context, null);
+        return emmet;
+    }
+
+    private void create(Context context, ConnectionListener connectionListener) {
+        mConnectionListener = connectionListener;
+
         mApiClient = new GoogleApiClient.Builder(context.getApplicationContext())
                 .addApi(Wearable.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
-        Wearable.MessageApi.addListener(mApiClient, this);
-        Wearable.DataApi.addListener(mApiClient, this);
+        Wearable.MessageApi.addListener(mApiClient, new MessageApi.MessageListener() {
+            @Override
+            public void onMessageReceived(MessageEvent messageEvent) {
+                messageReceived(messageEvent);
+            }
+        });
+        Wearable.DataApi.addListener(mApiClient, new DataApi.DataListener() {
+            @Override
+            public void onDataChanged(DataEventBuffer dataEventBuffer) {
+                dataChanged(dataEventBuffer);
+            }
+        });
         mApiClient.connect();
     }
 
-    public void onDestroy() {
+    public static Emmet onDestroy() {
+        Emmet emmet = getDefault();
+        emmet.destroy();
+        return emmet;
+    }
+
+    private void destroy() {
         if (mApiClient != null) {
             mApiClient.unregisterConnectionCallbacks(this);
             mApiClient.unregisterConnectionFailedListener(this);
@@ -90,22 +126,32 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
         }
     }
 
-    public <T> T createSender(Class<T> protocol) {
+    public static <T> T createSender(Class<T> protocol) {
+        return getDefault().create(protocol);
+    }
+
+    private <T> T create(Class<T> protocol) {
         return (T) Proxy.newProxyInstance(protocol.getClassLoader(), new Class<?>[]{protocol},
                 new DeLoreanInvocationHandler());
     }
 
-    public <T> void registerReceiver(Class<T> protocolClass, T protocol) {
+    private  <T> void register(Class<T> protocolClass, T protocol) {
         if (protocol != null) {
             interfaces.add(protocol);
         }
     }
 
-    public void setLogEnabled(boolean enabled){
+    public static <T> void registerReceiver(Class<T> protocolClass, T protocol) {
+        if (protocol != null) {
+            getDefault().register(protocolClass,protocol);
+        }
+    }
+
+    public void setLogEnabled(boolean enabled) {
         this.ENABLE_LOG = enabled;
     }
 
-    public boolean isLogEnabled(){
+    public boolean isLogEnabled() {
         return this.ENABLE_LOG;
     }
 
@@ -208,22 +254,34 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
         return methodsList;
     }
 
+    public static Emmet onMessageReceived(MessageEvent messageEvent) {
+        Emmet emmet = getDefault();
+        emmet.messageReceived(messageEvent);
+        return emmet;
+    }
+
     //@Override
-    public void onMessageReceived(MessageEvent messageEvent) {
+    public void messageReceived(MessageEvent messageEvent) {
         if (messageEvent.getPath().startsWith(PATH)) {
             String messageName = new String(messageEvent.getData());
             callMethodOnInterfaces(messageName);
         }
     }
 
+    public static Emmet onDataChanged(DataEventBuffer dataEvents) {
+        Emmet emmet = getDefault();
+        emmet.dataChanged(dataEvents);
+        return emmet;
+    }
+
     //@Override
-    public void onDataChanged(DataEventBuffer dataEvents) {
+    public void dataChanged(DataEventBuffer dataEvents) {
         for (DataEvent dataEvent : dataEvents) {
             String path = dataEvent.getDataItem().getUri().getPath();
-            if(ENABLE_LOG)
+            if (ENABLE_LOG)
                 Log.d(TAG, "onDataChanged(" + path + ")");
             if (path.startsWith(PATH)) { //if it's an Emmet path
-                if(ENABLE_LOG)
+                if (ENABLE_LOG)
                     Log.d(TAG, "emmet-onDataChanged " + path);
 
                 try {
@@ -307,7 +365,7 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
                 datamap.putDataMapArrayList(METHOD_PARAMS, methodDataMapList);
             }
 
-            if(ENABLE_LOG)
+            if (ENABLE_LOG)
                 Log.d(TAG, datamap.toString());
 
             if (mApiClient != null) {
@@ -328,10 +386,10 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
                     @Override
                     public void onResult(DataApi.DataItemResult dataItemResult) {
                         if (dataItemResult.getStatus().isSuccess()) {
-                            if(ENABLE_LOG)
+                            if (ENABLE_LOG)
                                 Log.d(TAG, "sent");
                         } else {
-                            if(ENABLE_LOG)
+                            if (ENABLE_LOG)
                                 Log.d(TAG, "send error");
                         }
                     }
@@ -381,7 +439,7 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
 
     @Override
     public void onConnected(Bundle bundle) {
-        if(ENABLE_LOG)
+        if (ENABLE_LOG)
             Log.d(TAG, "onConnected");
 
         if (mWaitingDataMapItems != null && !mWaitingDataMapItems.isEmpty()) {
@@ -403,7 +461,7 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
 
     @Override
     public void onConnectionSuspended(int i) {
-        if(ENABLE_LOG)
+        if (ENABLE_LOG)
             Log.d(TAG, "onConnectionSuspended");
         unregisterNodeListener();
         if (mConnectionListener != null) {
@@ -413,7 +471,7 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        if(ENABLE_LOG)
+        if (ENABLE_LOG)
             Log.d(TAG, "onConnectionFailed");
         if (mConnectionListener != null) {
             mConnectionListener.onConnectionFailed(connectionResult);
@@ -459,7 +517,9 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks, MessageApi.Me
 
     public interface ConnectionListener {
         void onConnected(Bundle connectionHint);
+
         void onConnectionSuspended(int cause);
+
         void onConnectionFailed(ConnectionResult connectionResult);
     }
 
