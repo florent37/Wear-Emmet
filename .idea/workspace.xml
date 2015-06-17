@@ -2,7 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1984af53-8394-4f3b-a13e-44b3c147a901" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wear/src/main/java/com/github/florent37/emmet/sample/MainActivity.java" afterPath="$PROJECT_DIR$/wear/src/main/java/com/github/florent37/emmet/sample/MainActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_22_2_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_22_2_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_22_2_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/wearable_1_2_0.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_22_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_21_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/wearable_1_1_0.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_base_6_5_87.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_base_7_5_0.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_wearable_6_5_87.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_wearable_7_5_0.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_21_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_22_0_0.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_22_0_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/baguette_1_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/baguette_1_0_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emmet/build.gradle" afterPath="$PROJECT_DIR$/emmet/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/build.gradle" afterPath="$PROJECT_DIR$/mobile/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wear/build.gradle" afterPath="$PROJECT_DIR$/wear/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emmet/emmet.iml" afterPath="$PROJECT_DIR$/emmet/emmet.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/mobile.iml" afterPath="$PROJECT_DIR$/mobile/mobile.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wear/wear.iml" afterPath="$PROJECT_DIR$/wear/wear.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wearprotocol/wearprotocol.iml" afterPath="$PROJECT_DIR$/wearprotocol/wearprotocol.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Wear-Emmet.iws" />
@@ -23,7 +43,20 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="Wear-Emmet" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+            </PATH>
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -32,14 +65,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/emmet/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.48723897">
+              <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Emmet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/emmet/src/main/java/com/github/florent37/emmet/Emmet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-8.074074">
               <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
               <folding>
-                <element signature="e#4394#4395#0" expanded="true" />
-                <element signature="e#4446#4447#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#5040#5041#0" expanded="false" />
+                <element signature="e#5081#5082#0" expanded="false" />
+                <element signature="e#5118#5119#0" expanded="false" />
+                <element signature="e#5156#5157#0" expanded="false" />
+                <marker date="1434575972000" expanded="true" signature="4493:4645" placeholder="{...}" />
+                <marker date="1434575972000" expanded="true" signature="9632:9736" placeholder="{...}" />
+                <marker date="1434575972000" expanded="true" signature="9810:10518" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -60,7 +109,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,26 +121,54 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#994#995#0" expanded="false" />
+                <element signature="e#1091#1092#0" expanded="false" />
+                <element signature="e#1153#1154#0" expanded="false" />
+                <element signature="e#1182#1183#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wear/src/main/java/com/github/florent37/emmet/sample/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3618421">
-              <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.8">
+              <caret line="13" column="65" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WearServiceCustom.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile/src/main/java/com/github/florent37/emmet/sample/WearServiceCustom.java">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wear/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.6">
+              <caret line="1" column="45" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mobile/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.4">
+              <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -100,7 +179,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -341,6 +422,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="copyReleaseLint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependency updates for the project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependencyUpdates" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs all device checks using Device Providers and Test Servers." />
@@ -707,19 +793,19 @@
                 <option name="name" value="preDexRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:appcompat-v7:22.0.0" />
+                <option name="description" value="Prepare com.android.support:appcompat-v7:22.2.0" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComAndroidSupportAppcompatV72200Library" />
+                <option name="name" value="prepareComAndroidSupportAppcompatV72220Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:support-v4:22.0.0" />
+                <option name="description" value="Prepare com.android.support:support-v4:22.2.0" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComAndroidSupportSupportV42200Library" />
+                <option name="name" value="prepareComAndroidSupportSupportV42220Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.github.florent37:emmet:1.0.3" />
+                <option name="description" value="Prepare com.github.florent37:emmet:1.0.4" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComGithubFlorent37Emmet103Library" />
+                <option name="name" value="prepareComGithubFlorent37Emmet104Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare Wear-Emmet:wearprotocol:unspecified" />
@@ -950,6 +1036,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/emmet" />
                 <option name="name" value="copyReleaseLint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependency updates for the project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/emmet" />
+                <option name="name" value="dependencyUpdates" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs all device checks using Device Providers and Test Servers." />
@@ -1447,6 +1538,11 @@
                 <option name="name" value="connectedCheck" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Displays the dependency updates for the project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/mobile" />
+                <option name="name" value="dependencyUpdates" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Runs all device checks using Device Providers and Test Servers." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/mobile" />
                 <option name="name" value="deviceCheck" />
@@ -1635,19 +1731,19 @@
                 <option name="name" value="preReleaseBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:appcompat-v7:22.0.0" />
+                <option name="description" value="Prepare com.android.support:appcompat-v7:22.2.0" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/mobile" />
-                <option name="name" value="prepareComAndroidSupportAppcompatV72200Library" />
+                <option name="name" value="prepareComAndroidSupportAppcompatV72220Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:support-v4:22.0.0" />
+                <option name="description" value="Prepare com.android.support:support-v4:22.2.0" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/mobile" />
-                <option name="name" value="prepareComAndroidSupportSupportV42200Library" />
+                <option name="name" value="prepareComAndroidSupportSupportV42220Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.github.florent37:emmet:1.0.3" />
+                <option name="description" value="Prepare com.github.florent37:emmet:1.0.4" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/mobile" />
-                <option name="name" value="prepareComGithubFlorent37Emmet103Library" />
+                <option name="name" value="prepareComGithubFlorent37Emmet104Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.google.android.gms:play-services-base:6.5.87" />
@@ -1930,6 +2026,11 @@
                 <option name="name" value="connectedCheck" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Displays the dependency updates for the project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/wear" />
+                <option name="name" value="dependencyUpdates" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Runs all device checks using Device Providers and Test Servers." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/wear" />
                 <option name="name" value="deviceCheck" />
@@ -2129,9 +2230,9 @@
                 <option name="name" value="prepareComGithubFlorent37Baguette101Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.github.florent37:emmet:1.0.3" />
+                <option name="description" value="Prepare com.github.florent37:emmet:1.0.4" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/wear" />
-                <option name="name" value="prepareComGithubFlorent37Emmet103Library" />
+                <option name="name" value="prepareComGithubFlorent37Emmet104Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.google.android.gms:play-services-base:6.5.87" />
@@ -2654,9 +2755,9 @@
                 <option name="name" value="prepareComAndroidSupportSupportV42100Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.github.florent37:emmet:1.0.3" />
+                <option name="description" value="Prepare com.github.florent37:emmet:1.0.4" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/wearprotocol" />
-                <option name="name" value="prepareComGithubFlorent37Emmet103Library" />
+                <option name="name" value="prepareComGithubFlorent37Emmet104Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.google.android.gms:play-services-base:6.5.87" />
@@ -2757,7 +2858,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="8598626277000" />
+        <entry key="$PROJECT_DIR$" value="8604514275000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2778,10 +2879,14 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.dcendents/android-maven-plugin/1.2/95655bd755e3bd8d43af63705f275c750e8b758e/android-maven-plugin-1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.1/331d80ea7dbccc6fb682a9ec93aca1d980cfadd8/gradle-bintray-plugin-1.1-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.1/d026e49cd0866a96d27a85537670be63abb28231/gradle-bintray-plugin-1.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.10.1/a4b4f577adf5e2e737bb570be93de817ef181da3/gradle-versions-plugin-0.10.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.10.1/e9048a99ac394f56dae142bdc524842b8258ac2/gradle-versions-plugin-0.10.1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/1.1.2/de3e8dc1cf48b03c2b7f1495776266ec000bb36b/gradle-core-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/1.1.2/a00cbafb8c7b46c8cbad69b0d8becf0ddc584172/gradle-core-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.7.2/f1860181de06236f28f3f247aed57fa4631016d8/http-builder-0.7.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.7.2/323092cd786480311c1cf693770f9e6fc20a8bef/http-builder-0.7.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.7/5db922f39e8bd8af65d4c4a9471fd94771e273d7/xstream-1.4.7-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.7/bce3282142b63068260f021fcbe48b72e8d71a1a/xstream-1.4.7.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/1.1.2/ae01c7d859623b09061933e3c7229a88433ee94c/builder-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/1.1.2/ec1df0e77d1ddcff8f31264e98237f959d71551a/builder-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.lint/lint/24.1.2/4367a98ab36a68c6672d1906fed186c099695087/lint-24.1.2-sources.jar" />
@@ -2795,6 +2900,9 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.nekohtml/nekohtml/1.9.16/61e35204e5a8fdb864152f84e2e3b33ab56f50ab/nekohtml-1.9.16.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-resolver/xml-resolver/1.2/6b72432ea1c5296783007365bb7c9a6b39dfb730/xml-resolver-1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-resolver/xml-resolver/1.2/3d0f97750b3a03e0971831566067754ba4bfd68c/xml-resolver-1.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xmlpull/xmlpull/1.1.3.1/2b8e230d2ab644e4ecaa94db7cdedbc40c805dfa/xmlpull-1.1.3.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/fffe25ec1f20ec1cfdc0edd41c6e0d55bc0dbaf5/xpp3_min-1.1.4c-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/19d4e90b43059058f6e056f794f0ea4030d60b86/xpp3_min-1.1.4c.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/1.1.2/3c932a61dd735c29df1a6008735d303b67fdcdbe/builder-model-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/1.1.2/9a36f4f21a4208e8f09f0cd93161c56c2a7144b2/builder-model-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-test-api/1.1.2/b910293f0ccd8f295c2e58bca309e493251743af/builder-test-api-1.1.2-sources.jar" />
@@ -2879,10 +2987,14 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.dcendents/android-maven-plugin/1.2/95655bd755e3bd8d43af63705f275c750e8b758e/android-maven-plugin-1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.1/331d80ea7dbccc6fb682a9ec93aca1d980cfadd8/gradle-bintray-plugin-1.1-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.1/d026e49cd0866a96d27a85537670be63abb28231/gradle-bintray-plugin-1.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.10.1/a4b4f577adf5e2e737bb570be93de817ef181da3/gradle-versions-plugin-0.10.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.10.1/e9048a99ac394f56dae142bdc524842b8258ac2/gradle-versions-plugin-0.10.1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/1.1.2/de3e8dc1cf48b03c2b7f1495776266ec000bb36b/gradle-core-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/1.1.2/a00cbafb8c7b46c8cbad69b0d8becf0ddc584172/gradle-core-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.7.2/f1860181de06236f28f3f247aed57fa4631016d8/http-builder-0.7.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.7.2/323092cd786480311c1cf693770f9e6fc20a8bef/http-builder-0.7.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.7/5db922f39e8bd8af65d4c4a9471fd94771e273d7/xstream-1.4.7-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.7/bce3282142b63068260f021fcbe48b72e8d71a1a/xstream-1.4.7.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/1.1.2/ae01c7d859623b09061933e3c7229a88433ee94c/builder-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/1.1.2/ec1df0e77d1ddcff8f31264e98237f959d71551a/builder-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.lint/lint/24.1.2/4367a98ab36a68c6672d1906fed186c099695087/lint-24.1.2-sources.jar" />
@@ -2896,6 +3008,9 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.nekohtml/nekohtml/1.9.16/61e35204e5a8fdb864152f84e2e3b33ab56f50ab/nekohtml-1.9.16.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-resolver/xml-resolver/1.2/6b72432ea1c5296783007365bb7c9a6b39dfb730/xml-resolver-1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-resolver/xml-resolver/1.2/3d0f97750b3a03e0971831566067754ba4bfd68c/xml-resolver-1.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xmlpull/xmlpull/1.1.3.1/2b8e230d2ab644e4ecaa94db7cdedbc40c805dfa/xmlpull-1.1.3.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/fffe25ec1f20ec1cfdc0edd41c6e0d55bc0dbaf5/xpp3_min-1.1.4c-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/19d4e90b43059058f6e056f794f0ea4030d60b86/xpp3_min-1.1.4c.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/1.1.2/3c932a61dd735c29df1a6008735d303b67fdcdbe/builder-model-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/1.1.2/9a36f4f21a4208e8f09f0cd93161c56c2a7144b2/builder-model-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-test-api/1.1.2/b910293f0ccd8f295c2e58bca309e493251743af/builder-test-api-1.1.2-sources.jar" />
@@ -2985,10 +3100,14 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.dcendents/android-maven-plugin/1.2/95655bd755e3bd8d43af63705f275c750e8b758e/android-maven-plugin-1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.1/331d80ea7dbccc6fb682a9ec93aca1d980cfadd8/gradle-bintray-plugin-1.1-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.1/d026e49cd0866a96d27a85537670be63abb28231/gradle-bintray-plugin-1.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.10.1/a4b4f577adf5e2e737bb570be93de817ef181da3/gradle-versions-plugin-0.10.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.10.1/e9048a99ac394f56dae142bdc524842b8258ac2/gradle-versions-plugin-0.10.1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/1.1.2/de3e8dc1cf48b03c2b7f1495776266ec000bb36b/gradle-core-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/1.1.2/a00cbafb8c7b46c8cbad69b0d8becf0ddc584172/gradle-core-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.7.2/f1860181de06236f28f3f247aed57fa4631016d8/http-builder-0.7.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.7.2/323092cd786480311c1cf693770f9e6fc20a8bef/http-builder-0.7.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.7/5db922f39e8bd8af65d4c4a9471fd94771e273d7/xstream-1.4.7-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.7/bce3282142b63068260f021fcbe48b72e8d71a1a/xstream-1.4.7.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/1.1.2/ae01c7d859623b09061933e3c7229a88433ee94c/builder-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/1.1.2/ec1df0e77d1ddcff8f31264e98237f959d71551a/builder-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.lint/lint/24.1.2/4367a98ab36a68c6672d1906fed186c099695087/lint-24.1.2-sources.jar" />
@@ -3002,6 +3121,9 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.nekohtml/nekohtml/1.9.16/61e35204e5a8fdb864152f84e2e3b33ab56f50ab/nekohtml-1.9.16.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-resolver/xml-resolver/1.2/6b72432ea1c5296783007365bb7c9a6b39dfb730/xml-resolver-1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-resolver/xml-resolver/1.2/3d0f97750b3a03e0971831566067754ba4bfd68c/xml-resolver-1.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xmlpull/xmlpull/1.1.3.1/2b8e230d2ab644e4ecaa94db7cdedbc40c805dfa/xmlpull-1.1.3.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/fffe25ec1f20ec1cfdc0edd41c6e0d55bc0dbaf5/xpp3_min-1.1.4c-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/19d4e90b43059058f6e056f794f0ea4030d60b86/xpp3_min-1.1.4c.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/1.1.2/3c932a61dd735c29df1a6008735d303b67fdcdbe/builder-model-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/1.1.2/9a36f4f21a4208e8f09f0cd93161c56c2a7144b2/builder-model-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-test-api/1.1.2/b910293f0ccd8f295c2e58bca309e493251743af/builder-test-api-1.1.2-sources.jar" />
@@ -3069,9 +3191,9 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/5.0.3/asm-analysis-5.0.3.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.3/lombok-ast-0.2.3-sources.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.3/lombok-ast-0.2.3.jar" />
-                            <option value="$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.0.0/appcompat-v7-22.0.0.aar" />
-                            <option value="$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/22.0.0/support-v4-22.0.0.aar" />
-                            <option value="$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar" />
+                            <option value="$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.2.0/appcompat-v7-22.2.0.aar" />
+                            <option value="$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/22.2.0/support-v4-22.2.0.aar" />
+                            <option value="$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar" />
                           </list>
                         </option>
                         <option name="path" value="$PROJECT_DIR$/mobile" />
@@ -3089,10 +3211,14 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.dcendents/android-maven-plugin/1.2/95655bd755e3bd8d43af63705f275c750e8b758e/android-maven-plugin-1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.1/331d80ea7dbccc6fb682a9ec93aca1d980cfadd8/gradle-bintray-plugin-1.1-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.1/d026e49cd0866a96d27a85537670be63abb28231/gradle-bintray-plugin-1.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.10.1/a4b4f577adf5e2e737bb570be93de817ef181da3/gradle-versions-plugin-0.10.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.10.1/e9048a99ac394f56dae142bdc524842b8258ac2/gradle-versions-plugin-0.10.1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/1.1.2/de3e8dc1cf48b03c2b7f1495776266ec000bb36b/gradle-core-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/1.1.2/a00cbafb8c7b46c8cbad69b0d8becf0ddc584172/gradle-core-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.7.2/f1860181de06236f28f3f247aed57fa4631016d8/http-builder-0.7.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.7.2/323092cd786480311c1cf693770f9e6fc20a8bef/http-builder-0.7.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.7/5db922f39e8bd8af65d4c4a9471fd94771e273d7/xstream-1.4.7-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.7/bce3282142b63068260f021fcbe48b72e8d71a1a/xstream-1.4.7.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/1.1.2/ae01c7d859623b09061933e3c7229a88433ee94c/builder-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/1.1.2/ec1df0e77d1ddcff8f31264e98237f959d71551a/builder-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.lint/lint/24.1.2/4367a98ab36a68c6672d1906fed186c099695087/lint-24.1.2-sources.jar" />
@@ -3106,6 +3232,9 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.nekohtml/nekohtml/1.9.16/61e35204e5a8fdb864152f84e2e3b33ab56f50ab/nekohtml-1.9.16.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-resolver/xml-resolver/1.2/6b72432ea1c5296783007365bb7c9a6b39dfb730/xml-resolver-1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-resolver/xml-resolver/1.2/3d0f97750b3a03e0971831566067754ba4bfd68c/xml-resolver-1.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xmlpull/xmlpull/1.1.3.1/2b8e230d2ab644e4ecaa94db7cdedbc40c805dfa/xmlpull-1.1.3.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/fffe25ec1f20ec1cfdc0edd41c6e0d55bc0dbaf5/xpp3_min-1.1.4c-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/19d4e90b43059058f6e056f794f0ea4030d60b86/xpp3_min-1.1.4c.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/1.1.2/3c932a61dd735c29df1a6008735d303b67fdcdbe/builder-model-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/1.1.2/9a36f4f21a4208e8f09f0cd93161c56c2a7144b2/builder-model-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-test-api/1.1.2/b910293f0ccd8f295c2e58bca309e493251743af/builder-test-api-1.1.2-sources.jar" />
@@ -3195,10 +3324,14 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.dcendents/android-maven-plugin/1.2/95655bd755e3bd8d43af63705f275c750e8b758e/android-maven-plugin-1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.1/331d80ea7dbccc6fb682a9ec93aca1d980cfadd8/gradle-bintray-plugin-1.1-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.1/d026e49cd0866a96d27a85537670be63abb28231/gradle-bintray-plugin-1.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.10.1/a4b4f577adf5e2e737bb570be93de817ef181da3/gradle-versions-plugin-0.10.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ben-manes/gradle-versions-plugin/0.10.1/e9048a99ac394f56dae142bdc524842b8258ac2/gradle-versions-plugin-0.10.1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/1.1.2/de3e8dc1cf48b03c2b7f1495776266ec000bb36b/gradle-core-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/1.1.2/a00cbafb8c7b46c8cbad69b0d8becf0ddc584172/gradle-core-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.7.2/f1860181de06236f28f3f247aed57fa4631016d8/http-builder-0.7.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.7.2/323092cd786480311c1cf693770f9e6fc20a8bef/http-builder-0.7.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.7/5db922f39e8bd8af65d4c4a9471fd94771e273d7/xstream-1.4.7-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.7/bce3282142b63068260f021fcbe48b72e8d71a1a/xstream-1.4.7.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/1.1.2/ae01c7d859623b09061933e3c7229a88433ee94c/builder-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/1.1.2/ec1df0e77d1ddcff8f31264e98237f959d71551a/builder-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.lint/lint/24.1.2/4367a98ab36a68c6672d1906fed186c099695087/lint-24.1.2-sources.jar" />
@@ -3212,6 +3345,9 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.nekohtml/nekohtml/1.9.16/61e35204e5a8fdb864152f84e2e3b33ab56f50ab/nekohtml-1.9.16.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-resolver/xml-resolver/1.2/6b72432ea1c5296783007365bb7c9a6b39dfb730/xml-resolver-1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-resolver/xml-resolver/1.2/3d0f97750b3a03e0971831566067754ba4bfd68c/xml-resolver-1.2.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xmlpull/xmlpull/1.1.3.1/2b8e230d2ab644e4ecaa94db7cdedbc40c805dfa/xmlpull-1.1.3.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/fffe25ec1f20ec1cfdc0edd41c6e0d55bc0dbaf5/xpp3_min-1.1.4c-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/19d4e90b43059058f6e056f794f0ea4030d60b86/xpp3_min-1.1.4c.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/1.1.2/3c932a61dd735c29df1a6008735d303b67fdcdbe/builder-model-1.1.2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-model/1.1.2/9a36f4f21a4208e8f09f0cd93161c56c2a7144b2/builder-model-1.1.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder-test-api/1.1.2/b910293f0ccd8f295c2e58bca309e493251743af/builder-test-api-1.1.2-sources.jar" />
@@ -3408,7 +3544,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/emmet/build.gradle" />
         <option value="$PROJECT_DIR$/local.properties" />
         <option value="$PROJECT_DIR$/emmet/src/main/java/com/github/florent37/emmet/Emmet.java" />
         <option value="$PROJECT_DIR$/emmet/src/main/java/com/github/florent37/emmet/EmmetWearableListenerService.java" />
@@ -3416,6 +3551,10 @@
         <option value="$PROJECT_DIR$/mobile/src/main/java/com/github/florent37/emmet/sample/WearService.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/wear/src/main/java/com/github/florent37/emmet/sample/MainActivity.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/wear/build.gradle" />
+        <option value="$PROJECT_DIR$/mobile/build.gradle" />
+        <option value="$PROJECT_DIR$/emmet/build.gradle" />
       </list>
     </option>
   </component>
@@ -3439,7 +3578,7 @@
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="false" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
     <ConfirmationsSetting value="0" id="Add" />
@@ -3906,7 +4045,13 @@
       <option name="project" value="LOCAL" />
       <updated>1434576171072</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added singleton">
+      <created>1434576188272</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1434576188272</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3915,17 +4060,17 @@
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298969" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -3977,14 +4122,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/emmet/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.2">
@@ -4005,7 +4142,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4013,7 +4152,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#994#995#0" expanded="false" />
+            <element signature="e#1091#1092#0" expanded="false" />
+            <element signature="e#1153#1154#0" expanded="false" />
+            <element signature="e#1182#1183#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4022,8 +4167,14 @@
         <state vertical-scroll-proportion="-8.074074">
           <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
           <folding>
-            <element signature="e#4394#4395#0" expanded="true" />
-            <element signature="e#4446#4447#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#5040#5041#0" expanded="false" />
+            <element signature="e#5081#5082#0" expanded="false" />
+            <element signature="e#5118#5119#0" expanded="false" />
+            <element signature="e#5156#5157#0" expanded="false" />
+            <marker date="1434575972000" expanded="true" signature="4493:4645" placeholder="{...}" />
+            <marker date="1434575972000" expanded="true" signature="9632:9736" placeholder="{...}" />
+            <marker date="1434575972000" expanded="true" signature="9810:10518" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -4032,7 +4183,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4046,8 +4199,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wear/src/main/java/com/github/florent37/emmet/sample/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3618421">
-          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8">
+          <caret line="13" column="65" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wear/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6">
+          <caret line="1" column="45" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.4">
+          <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emmet/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.48723897">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
           <folding />
         </state>
       </provider>
