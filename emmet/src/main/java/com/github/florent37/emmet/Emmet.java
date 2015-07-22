@@ -110,19 +110,20 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
         mApiClient.connect();
     }
 
-    public static Emmet onDestroy() {
+    public static <T> Emmet onDestroy(T protocol) {
         Emmet emmet = getDefault();
-        emmet.destroy();
+        emmet.destroy(protocol);
         return emmet;
     }
 
-    private void destroy() {
+    private <T> void destroy(T protocol) {
         if (mApiClient != null) {
             mApiClient.unregisterConnectionCallbacks(this);
             mApiClient.unregisterConnectionFailedListener(this);
             unregisterNodeListener();
             mApiClient.disconnect();
             mApiClient = null;
+            unregister(protocol);
         }
     }
 
@@ -138,6 +139,12 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
     private  <T> void register(Class<T> protocolClass, T protocol) {
         if (protocol != null) {
             interfaces.add(protocol);
+        }
+    }
+
+    public  <T>  void unregister(T protocol){
+        if(protocol != null){
+            interfaces.remove(protocol);
         }
     }
 
