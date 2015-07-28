@@ -46,7 +46,7 @@ install {
         // This generates POM.xml with proper parameters
         pom {
             project {
-                packaging 'jar'
+                packaging 'aar'
 
                 // Add your description here
                 name 'Emmet'

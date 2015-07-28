@@ -19,7 +19,7 @@ public class EmmetWearableListenerService extends WearableListenerService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Emmet.onDestroy(this);
+        Emmet.onDestroy();
     }
 
     @Override

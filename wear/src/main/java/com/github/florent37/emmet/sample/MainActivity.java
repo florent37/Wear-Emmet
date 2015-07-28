@@ -24,8 +24,6 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
     private Button buttonHello;
     private Button buttonGoodbye;
 
-    private Handler handler = new Handler(Looper.getMainLooper());
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
