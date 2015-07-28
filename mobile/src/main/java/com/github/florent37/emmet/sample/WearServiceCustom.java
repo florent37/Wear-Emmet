@@ -46,7 +46,7 @@ public class WearServiceCustom extends WearableListenerService implements Smartp
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Emmet.onDestroy();
+        Emmet.onDestroy(this);
     }
 
     @Override

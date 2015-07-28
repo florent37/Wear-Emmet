@@ -2,6 +2,7 @@ package com.github.florent37.emmet.sample;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.github.florent37.emmet.Emmet;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class WearService extends EmmetWearableListenerService implements SmartphoneProtocol {
 
-    private final static String TAG = "WearService";
+    //private final static String TAG = "WearService";
 
     private Handler handler = new Handler(Looper.getMainLooper());
 
@@ -23,7 +24,6 @@ public class WearService extends EmmetWearableListenerService implements Smartph
     @Override
     public void onCreate() {
         super.onCreate();
-
         Emmet.registerReceiver(SmartphoneProtocol.class, this);
         sender = Emmet.createSender(WearProtocol.class);
 
@@ -52,4 +52,8 @@ public class WearService extends EmmetWearableListenerService implements Smartph
         sender.sayReceived(myObject);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }
