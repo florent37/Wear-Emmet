@@ -24,18 +24,21 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
     private Button buttonHello;
     private Button buttonGoodbye;
 
+    Emmet emmet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Emmet.onCreate(this); //<---------- IMPORTANT
+        emmet = new Emmet();
+        emmet.onCreate(this); //<---------- IMPORTANT
 
         //create a sender
-        smartphoneProtocol = Emmet.createSender(SmartphoneProtocol.class);
+        smartphoneProtocol = emmet.createSender(SmartphoneProtocol.class);
 
         //register this activity as WearProtocolReceiver
-        Emmet.registerReceiver(WearProtocol.class, this);
+        emmet.registerReceiver(WearProtocol.class, this);
 
         buttonHello = (Button) findViewById(R.id.buttonHello);
         buttonGoodbye = (Button) findViewById(R.id.buttonGoodbye);
@@ -47,7 +50,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Wear
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Emmet.onDestroy(); //<---------- IMPORTANT
+        emmet.onDestroy(); //<---------- IMPORTANT
     }
 
     @Override

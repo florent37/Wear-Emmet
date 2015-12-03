@@ -24,8 +24,8 @@ public class WearService extends EmmetWearableListenerService implements Smartph
     @Override
     public void onCreate() {
         super.onCreate();
-        Emmet.registerReceiver(SmartphoneProtocol.class, this);
-        sender = Emmet.createSender(WearProtocol.class);
+        getEmmet().registerReceiver(SmartphoneProtocol.class, this);
+        sender = getEmmet().createSender(WearProtocol.class);
     }
 
     private void show(final String text){

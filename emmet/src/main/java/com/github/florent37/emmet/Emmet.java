@@ -64,30 +64,14 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
     private NodeListener mNodeListener;
     private boolean mNodeListenerRegistered;
 
-    private static Emmet INSTANCE;
-
-    private Emmet() {
+    public Emmet() {
     }
 
-    public static Emmet getDefault() {
-        if (INSTANCE == null)
-            INSTANCE = new Emmet();
-        return INSTANCE;
+    public Emmet onCreate(Context context) {
+        return onCreate(context, null);
     }
 
-    private static Emmet onCreate(Context context, ConnectionListener connectionListener) {
-        Emmet emmet = getDefault();
-        emmet.create(context, connectionListener);
-        return emmet;
-    }
-
-    public static Emmet onCreate(Context context) {
-        Emmet emmet = getDefault();
-        emmet.create(context, null);
-        return emmet;
-    }
-
-    private void create(Context context, ConnectionListener connectionListener) {
+    public Emmet onCreate(Context context, ConnectionListener connectionListener) {
         mConnectionListener = connectionListener;
 
         mApiClient = new GoogleApiClient.Builder(context.getApplicationContext())
@@ -98,25 +82,21 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
         Wearable.MessageApi.addListener(mApiClient, new MessageApi.MessageListener() {
             @Override
             public void onMessageReceived(MessageEvent messageEvent) {
-                messageReceived(messageEvent);
+                onMessageReceived(messageEvent);
             }
         });
         Wearable.DataApi.addListener(mApiClient, new DataApi.DataListener() {
             @Override
             public void onDataChanged(DataEventBuffer dataEventBuffer) {
-                dataChanged(dataEventBuffer);
+                onDataChanged(dataEventBuffer);
             }
         });
         mApiClient.connect();
+
+        return this;
     }
 
-    public static Emmet onDestroy() {
-        Emmet emmet = getDefault();
-        emmet.destroy();
-        return emmet;
-    }
-
-    private void destroy() {
+    public Emmet onDestroy() {
         if (mApiClient != null) {
             mApiClient.unregisterConnectionCallbacks(this);
             mApiClient.unregisterConnectionFailedListener(this);
@@ -126,18 +106,15 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
 
             interfaces.clear();
         }
+        return this;
     }
 
-    public static <T> T createSender(Class<T> protocol) {
-        return getDefault().create(protocol);
-    }
-
-    private <T> T create(Class<T> protocol) {
+    public  <T> T createSender(Class<T> protocol) {
         return (T) Proxy.newProxyInstance(protocol.getClassLoader(), new Class<?>[]{protocol},
-                new DeLoreanInvocationHandler());
+                new EmmetInvocationHandler());
     }
 
-    private  <T> void register(Class<T> protocolClass, T protocol) {
+    public   <T> void registerReceiver(Class<T> protocolClass, T protocol) {
         if (protocol != null) {
             interfaces.add(protocol);
         }
@@ -149,14 +126,9 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
         }
     }
 
-    public static <T> void registerReceiver(Class<T> protocolClass, T protocol) {
-        if (protocol != null) {
-            getDefault().register(protocolClass,protocol);
-        }
-    }
-
-    public void setLogEnabled(boolean enabled) {
+    public Emmet setLogEnabled(boolean enabled) {
         this.ENABLE_LOG = enabled;
+        return this;
     }
 
     public boolean isLogEnabled() {
@@ -262,28 +234,17 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
         return methodsList;
     }
 
-    public static Emmet onMessageReceived(MessageEvent messageEvent) {
-        Emmet emmet = getDefault();
-        emmet.messageReceived(messageEvent);
-        return emmet;
-    }
-
     //@Override
-    public void messageReceived(MessageEvent messageEvent) {
+    public Emmet onMessageReceived(MessageEvent messageEvent) {
         if (messageEvent.getPath().startsWith(PATH)) {
             String messageName = new String(messageEvent.getData());
             callMethodOnInterfaces(messageName);
         }
-    }
-
-    public static Emmet onDataChanged(DataEventBuffer dataEvents) {
-        Emmet emmet = getDefault();
-        emmet.dataChanged(dataEvents);
-        return emmet;
+        return this;
     }
 
     //@Override
-    public void dataChanged(DataEventBuffer dataEvents) {
+    public Emmet onDataChanged(DataEventBuffer dataEvents) {
         for (DataEvent dataEvent : dataEvents) {
             String path = dataEvent.getDataItem().getUri().getPath();
             if (ENABLE_LOG)
@@ -302,13 +263,14 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
                 }
             }
         }
+        return this;
     }
 
 //endregion
 
 //region sender
 
-    private class DeLoreanInvocationHandler implements InvocationHandler {
+    private class EmmetInvocationHandler implements InvocationHandler {
 
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -338,11 +300,8 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
             {
                 ArrayList<DataMap> methodDataMapList = new ArrayList<>();
 
-                int nbArgs = args.length;
-                for (int argumentPos = 0; argumentPos < nbArgs; ++argumentPos) {
+                for (Object argument : args) {
                     DataMap map = new DataMap();
-
-                    Object argument = args[argumentPos];
 
                     if (argument instanceof Integer) {
                         map.putString(PARAM_TYPE, TYPE_INT);
@@ -360,11 +319,9 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
                         map.putString(PARAM_TYPE, TYPE_STRING);
                         map.putString(PARAM_VALUE, (String) argument);
                     } else {
-
                         map.putString(PARAM_TYPE, argument.getClass().getName());
                         String encoded = SerialisationUtilsGSON.serialize(argument);
                         map.putString(PARAM_VALUE, encoded);
-
                     }
 
                     methodDataMapList.add(map);

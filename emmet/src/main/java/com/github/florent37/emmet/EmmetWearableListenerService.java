@@ -9,30 +9,37 @@ import com.google.android.gms.wearable.WearableListenerService;
  */
 public class EmmetWearableListenerService extends WearableListenerService {
 
+    Emmet emmet;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        emmet = new Emmet();
 
-        Emmet.onCreate(this);
+        emmet.onCreate(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Emmet.onDestroy();
+        emmet.onDestroy();
     }
 
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         super.onMessageReceived(messageEvent);
         //on WearableListenerService you have to dispatch onMessageReceived(x)
-        Emmet.onMessageReceived(messageEvent);
+        emmet.onMessageReceived(messageEvent);
     }
 
     @Override
     public void onDataChanged(DataEventBuffer dataEvents) {
         super.onDataChanged(dataEvents);
         //on WearableListenerService you have to dispatch onDataChanged(x)
-        Emmet.onDataChanged(dataEvents);
+        emmet.onDataChanged(dataEvents);
+    }
+
+    protected Emmet getEmmet(){
+        return emmet;
     }
 }

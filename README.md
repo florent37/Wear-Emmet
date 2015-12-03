@@ -20,13 +20,13 @@ public interface WearProtocol{
 
 2/ Use Emmet to send data to the Wear
 ```java
-WearProtocol wearProtocol = Emmet.createSender(WearProtocol.class);
+WearProtocol wearProtocol = emmet.createSender(WearProtocol.class);
 wearProtocol.sendMyObject(myObject);
 ```
 
 3/ Receive the data in Wear
 ```
-Emmet.registerReceiver(WearProtocol.class, new WearProtocol() {
+emmet.registerReceiver(WearProtocol.class, new WearProtocol() {
     @Override
     public void sendMyObject(MyObject object) {
         /* Do whatever you want with the object */
@@ -57,7 +57,7 @@ In the module wearprotocol import **emmet**
 [![Download](https://api.bintray.com/packages/florent37/maven/Emmet/images/download.svg)](https://bintray.com/florent37/maven/Emmet/_latestVersion)
 ```java
 dependencies {
-    compile ("com.github.florent37:emmet:1.0.5@aar"){
+    compile ("com.github.florent37:emmet:1.0.6@aar"){
         transitive=true
     }
 }
