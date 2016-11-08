@@ -33,7 +33,9 @@ import java.util.List;
  */
 public class Emmet implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        ResultCallback<NodeApi.GetConnectedNodesResult> {
+        ResultCallback<NodeApi.GetConnectedNodesResult>,
+        DataApi.DataListener,
+        MessageApi.MessageListener {
 
     private static final String TAG = "Emmet";
     private final String PATH = "/Emmet/";
