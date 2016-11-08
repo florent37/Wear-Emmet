@@ -79,18 +79,8 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
-        Wearable.MessageApi.addListener(mApiClient, new MessageApi.MessageListener() {
-            @Override
-            public void onMessageReceived(MessageEvent messageEvent) {
-                onMessageReceived(messageEvent);
-            }
-        });
-        Wearable.DataApi.addListener(mApiClient, new DataApi.DataListener() {
-            @Override
-            public void onDataChanged(DataEventBuffer dataEventBuffer) {
-                onDataChanged(dataEventBuffer);
-            }
-        });
+        Wearable.MessageApi.addListener(mApiClient, this);
+        Wearable.DataApi.addListener(mApiClient, this);
         mApiClient.connect();
 
         return this;
@@ -234,17 +224,16 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
         return methodsList;
     }
 
-    //@Override
-    public Emmet onMessageReceived(MessageEvent messageEvent) {
+    @Override
+    public void onMessageReceived(MessageEvent messageEvent) {
         if (messageEvent.getPath().startsWith(PATH)) {
             String messageName = new String(messageEvent.getData());
             callMethodOnInterfaces(messageName);
         }
-        return this;
     }
 
-    //@Override
-    public Emmet onDataChanged(DataEventBuffer dataEvents) {
+    @Override
+    public void onDataChanged(DataEventBuffer dataEvents) {
         for (DataEvent dataEvent : dataEvents) {
             String path = dataEvent.getDataItem().getUri().getPath();
             if (ENABLE_LOG)
@@ -263,7 +252,6 @@ public class Emmet implements GoogleApiClient.ConnectionCallbacks,
                 }
             }
         }
-        return this;
     }
 
 //endregion
